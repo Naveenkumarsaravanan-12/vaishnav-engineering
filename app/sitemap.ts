@@ -1,30 +1,14 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://www.vaishnavengineering2009.com'
+
   return [
-    {
-      url: 'https://www.vaishnavengineering2009.com',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://www.vaishnavengineering2009.com/about',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://www.vaishnavengineering2009.com/contact',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://www.vaishnavengineering2009.com/services',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://www.vaishnavengineering2009.com/projects',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://www.vaishnavengineering2009.com/team',
-      lastModified: new Date(),
-    },
+    { url: baseUrl, lastModified: new Date() },
+    { url: `${baseUrl}/about`, lastModified: new Date() },
+    { url: `${baseUrl}/contact`, lastModified: new Date() },
+    { url: `${baseUrl}/services`, lastModified: new Date() },
+    { url: `${baseUrl}/projects`, lastModified: new Date() },
+    { url: `${baseUrl}/team`, lastModified: new Date() },
   ]
 }
