@@ -4,7 +4,7 @@ import Footer from "../components/layout/Footer";
 import { ThemeProvider } from "next-themes"; // You'll need to install this
 
 export const metadata = {
-  title: "Vaishnav Engineering Pvt Ltd",
+  title: "Vaishnav Engineering ",
   description: "RDSO Certified Company specializing in Electrical, Mechanical, Engineering Services",
   icons: {
     icon: "/logo/logo.jpeg",
