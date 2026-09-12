@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes"; // You'll need to install this
 
 export const metadata = {
   title: "Vaishnav Engineering ",
-  description: "RDSO Certified Company specializing in Electrical, Mechanical, Engineering Services",
+  description: "RDSO Certified Company specializing in Electrical, Mechanical Engineering Services",
   icons: {
     icon: "/logo/logo.jpeg",
     shortcut: "/logo/logo.jpeg",
