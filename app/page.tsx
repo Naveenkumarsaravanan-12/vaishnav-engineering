@@ -62,7 +62,7 @@ const capabilities = [
   {
     num: "01",
     title: "Fabrication",
-    desc: "Heavy structural steel members developed for infrastructure and industrial use.",
+    desc: "Heavy structural steel members developed for infrastructure and industrial purpose.",
   },
   {
     num: "02",
