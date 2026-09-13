@@ -83,7 +83,7 @@ const capabilities = [
 
 const metrics = [
   { value: "100+", label: "Projects" },
-  { value: "17yrs", label: "Experience" },
+  { value: "17yrs+", label: "Experience" },
   { value: "RDSO", label: "Focused" },
 ] as const;
 
