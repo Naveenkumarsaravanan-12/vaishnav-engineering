@@ -109,7 +109,7 @@ export default function ContactPage() {
     {
       title: "Unit 01",
       address:
-        "SF.No. 296/1, S.N Pudur Village, Thiruvalam, Vellore Dist. - 632 519. Tamil Nadu, India.",
+        "SF.No. 295/1, S.N Pudur Village, Thiruvalam, Vellore Dist. - 632 519. Tamil Nadu, India.",
     },
     {
       title: "Unit 02",
