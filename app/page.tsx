@@ -399,8 +399,8 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {PROJECTS_DATA.slice(0, 3).map((project, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {PROJECTS_DATA.map((project, idx) => (
               <Reveal key={project.id} direction="scale" delay={idx * 0.1}>
                 <div className="rounded-2xl border border-[#39434D]/20 bg-white overflow-hidden shadow-xs hover:-translate-y-1 hover:shadow-xl hover:border-[#C6A66B] hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 flex flex-col group h-full">
                   <div className="relative h-60 w-full bg-[#101820] overflow-hidden">
@@ -408,7 +408,7 @@ export default function Home() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />

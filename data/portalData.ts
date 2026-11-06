@@ -285,30 +285,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: "Coimbatore, Tamil Nadu",
     image: "/projects/bridge-2.png",
     description: "Heavy plate girder fabrication with high strength friction grip (HSFG) bolting connection splices."
-  },
-  {
-    id: "p3",
-    title: "Tambaram – Perungalathur Composite Girder Road Over Bridge (ROB)",
-    client: "Southern Railway / Thavam Constructions",
-    year: "2024",
-    tonnage: "1,180 MT",
-    spanDetails: "1 Span x 52.15m Skew / 49.005m Sq Composite Girder",
-    status: "Completed",
-    location: "Tambaram – Perungalathur, Tamil Nadu",
-    image: "/rob/rob-01.png",
-    description: "Re-construction of Road Over Bridges with heavy composite steel girders in lieu of ROB 95B & 159A under RDSO B&S inspection."
-  },
-  {
-    id: "p4",
-    title: "Track Portal Frames & Foot Over Bridge (FOB) Steelwork",
-    client: "South Central Railway",
-    year: "2023",
-    tonnage: "820 MT",
-    spanDetails: "12 Unit Overhead Steel Portal Structures",
-    status: "Completed",
-    location: "Vijayawada Division",
-    image: "/projects/bridge.jpeg",
-    description: "Heavy section steel gantries for railway electrification and pedestrian overbridges."
   }
 ];
 
