@@ -258,3 +258,4 @@ export function RdsoMobileNav({ activeSection, onScrollToSection }: RdsoNavProps
 
 // Default export for backwards compatibility
 export default RdsoVerticalNav;
+

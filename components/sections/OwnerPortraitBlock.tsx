@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 
 export default function OwnerPortraitBlock() {
@@ -128,15 +128,17 @@ export default function OwnerPortraitBlock() {
               Established in <span className="text-[#D6A64F] font-semibold">2009</span>, Vaishnav Engineering has built its expertise in railway bridge fabrication and structural steel engineering. Achieving <span className="text-[#D6A64F] font-semibold">RDSO certification in 2015</span> marked an important milestone in the company&apos;s journey, strengthening its commitment to quality, precision, and dependable railway infrastructure solutions.
             </p>
 
-            {/* Premium Outlined "Get in touch" Button */}
+            {/* Premium Outlined Official Mail ID Button */}
             <div className="pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 rounded-xl border border-[#D6A64F] bg-transparent px-7 py-3.5 text-sm sm:text-base font-semibold text-[#D6A64F] shadow-md shadow-black/30 hover:bg-gradient-to-r hover:from-[#D6A64F] hover:to-[#F0BF68] hover:text-[#071B2D] hover:shadow-lg hover:shadow-[#D6A64F]/25 transition-all duration-300 group cursor-pointer active:scale-98"
+              <a
+                href="mailto:vaishnav.engg2009@gmail.com"
+                className="inline-flex items-center gap-2.5 rounded-xl border border-[#D6A64F] bg-transparent px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-[#D6A64F] shadow-md shadow-black/30 hover:bg-gradient-to-r hover:from-[#D6A64F] hover:to-[#F0BF68] hover:text-[#071B2D] hover:shadow-lg hover:shadow-[#D6A64F]/25 transition-all duration-300 group cursor-pointer active:scale-98"
+                title="Send email to vaishnav.engg2009@gmail.com"
               >
-                <span>Get in touch</span>
-                <ArrowRight className="w-4 h-4 text-[#D6A64F] group-hover:text-[#071B2D] transition-all duration-200 group-hover:translate-x-1" />
-              </Link>
+                <Mail className="w-4 h-4 text-[#D6A64F] group-hover:text-[#071B2D] transition-colors shrink-0" />
+                <span className="font-mono tracking-tight sm:tracking-normal">vaishnav.engg2009@gmail.com</span>
+                <ArrowRight className="w-4 h-4 text-[#D6A64F] group-hover:text-[#071B2D] transition-all duration-200 group-hover:translate-x-1 shrink-0" />
+              </a>
             </div>
           </motion.div>
 
