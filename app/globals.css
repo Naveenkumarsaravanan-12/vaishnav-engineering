@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ---------------- ROOT DESIGN SYSTEM TOKENS ---------------- */
+
+:root {
+  /* Global Typography System (Manrope Google Font) */
+  --font-manrope-primary: var(--font-manrope, 'Manrope'), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-manrope-primary);
+  --font-body: var(--font-manrope-primary);
+  --font-sans: var(--font-manrope-primary);
+  --font-mono: var(--font-manrope-primary);
+
+  /* Typography Scale & Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Executive Railway Engineering Palette */
+  --color-midnight: #101820;        /* Primary Dark Background */
+  --color-charcoal: #202A33;        /* Secondary Dark Background */
+  --color-ivory: #F5F1E8;           /* Primary Warm Ivory */
+  --color-steel-grey: #E5E7EB;      /* Secondary Light Grey-White */
+  --color-gold: #D6B36A;            /* Premium Accent (Champagne Gold) */
+  --color-gold-hover: #E2C785;      /* Champagne Gold Hover */
+  --color-gold-subtle: rgba(214, 179, 106, 0.15);
+
+  --color-text-dark: #FFFFFF;       /* Primary Headings: Pure White */
+  --color-text-ivory: #F5F1E8;      /* Secondary Headings: Warm Ivory */
+  --color-text-gold: #D6B36A;       /* Highlight Words: Champagne Gold */
+  --color-text-muted: #E5E7EB;      /* Supporting Text: Light Grey-White */
+  --color-border-dark: #39434D;     /* Borders & Dividers on Dark */
+  --color-border-light: #D6D9DE;    /* Borders & Dividers on Light */
+
+  /* Default theme mappings */
+  --background: #F5F3EE;
+  --foreground: #20262D;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope-primary);
+  --font-heading: var(--font-manrope-primary);
+  --font-body: var(--font-manrope-primary);
+  --font-mono: var(--font-manrope-primary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* ---------------- HTML & BODY BASE ---------------- */
+
+html {
+  scroll-behavior: smooth;
+  background-color: #F5F3EE;
+  color: #20262D;
+  font-family: var(--font-body) !important;
+}
+
+body {
+  background-color: #F5F3EE;
+  color: #20262D;
+  font-family: var(--font-body) !important;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: #C6A66B;
+  color: #101820;
+}
+
+/* ---------------- TYPOGRAPHY HIERARCHY (MANROPE GLOBAL REDESIGN) ---------------- */
+
+@layer base {
+  /* Main Headings: Manrope ExtraBold (800) */
+  h1,
+  .main-heading,
+  .hero-heading {
+    font-family: var(--font-heading) !important;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  /* Section Headings: Manrope Bold (700) */
+  h2,
+  h3,
+  .section-heading,
+  [data-slot="section-header"] h2,
+  [data-slot="section-header"] h3 {
+    font-family: var(--font-heading) !important;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Subheadings: Manrope SemiBold (600) */
+  h4,
+  h5,
+  h6,
+  .subheading,
+  .sub-heading {
+    font-family: var(--font-heading) !important;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+  }
+
+  /* Body Paragraphs: Manrope Regular (400) */
+  p,
+  .body-text {
+    font-family: var(--font-body) !important;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  p strong,
+  p b {
+    font-weight: 700 !important;
+  }
+
+  /* Navigation: Manrope SemiBold (600) */
+  nav,
+  nav a,
+  .nav-link,
+  header nav,
+  header nav a,
+  .navbar-link {
+    font-family: var(--font-body) !important;
+    font-weight: 600;
+  }
+
+  /* Buttons: Manrope Bold (700) */
+  button,
+  [role="button"],
+  .btn,
+  .btn-gold,
+  .btn-primary,
+  .btn-secondary,
+  .btn-light-outline,
+  input[type="submit"],
+  input[type="button"] {
+    font-family: var(--font-body) !important;
+    font-weight: 700;
+  }
+
+  /* Tables and Technical Specifications: Manrope Medium (500) */
+  table,
+  table td,
+  .tech-spec,
+  .spec-table,
+  .spec-item,
+  .tech-row,
+  .spec-grid {
+    font-family: var(--font-body) !important;
+    font-weight: 500;
+  }
+
+  table th,
+  .table-header {
+    font-family: var(--font-body) !important;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* Footer and Small Labels: Manrope Medium (500) */
+  footer,
+  footer p,
+  footer a,
+  footer span,
+  footer li,
+  footer div,
+  label,
+  small,
+  .label-text,
+  .small-label,
+  .badge,
+  .tag {
+    font-family: var(--font-body) !important;
+    font-weight: 500;
+  }
+
+  footer h1,
+  footer h2,
+  footer h3,
+  footer h4,
+  footer h5,
+  footer h6 {
+    font-family: var(--font-heading) !important;
+    font-weight: 700;
+  }
+
+  /* Form controls */
+  input,
+  textarea,
+  select,
+  form {
+    font-family: var(--font-body) !important;
+    font-weight: 400;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-family: var(--font-body) !important;
+    font-weight: 400;
+  }
+}
+
+/* Ensure font utility classes all resolve strictly to Manrope */
+.font-mono, [class*="font-mono"] {
+  font-family: var(--font-body) !important;
+}
+
+.font-heading, [class*="font-heading"] {
+  font-family: var(--font-heading) !important;
+}
+
+.font-body, [class*="font-body"] {
+  font-family: var(--font-body) !important;
+}
+
+.font-sans, [class*="font-sans"] {
+  font-family: var(--font-sans) !important;
+}
+
+.font-black, [class*="font-black"] {
+  font-weight: 800 !important;
+}
+
+/* Colors on dark sections */
+.text-dark h1, .text-dark h2, .text-dark h3, .text-dark h4,
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+#cinematic-bridge-scroll-container h1,
+#cinematic-bridge-scroll-container h2,
+#cinematic-bridge-scroll-container h3,
+#rob-erection-sequence h1,
+#rob-erection-sequence h2,
+#rob-erection-sequence h3 {
+  color: #FFFFFF !important;
+}
+
+#cinematic-bridge-scroll-container p,
+#rob-erection-sequence p {
+  color: #E5E7EB;
+}
+
+/* Work Force Organization Chart Department Header Titles */
+.department-title {
+  color: #FFFFFF !important;
+}
+
+/* ---------------- BUTTON UTILITIES (CHAMPAGNE GOLD & INDUSTRIAL CHARCOAL) ---------------- */
+
+/* Primary Button: Champagne Gold with Dark Text */
+.btn-gold, .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #C6A66B;
+  background-image: linear-gradient(180deg, #D4B87D 0%, #C6A66B 100%);
+  color: #101820;
+  font-family: var(--font-body) !important;
+  font-size: 0.875rem;
+  font-weight: 700 !important;
+  padding: 0.65rem 1.35rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(198, 166, 107, 0.28), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-gold:hover, .btn-primary:hover {
+  background-color: #D8B97E;
+  background-image: linear-gradient(180deg, #E2C790 0%, #D4B87D 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px 0 rgba(198, 166, 107, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+  color: #101820;
+}
+
+.btn-gold:active, .btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button: Industrial Charcoal with Champagne Gold Accent */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #202A33;
+  color: #F8F7F2;
+  border: 1px solid #39434D;
+  font-family: var(--font-body) !important;
+  font-size: 0.875rem;
+  font-weight: 700 !important;
+  padding: 0.65rem 1.35rem;
+  border-radius: 0.625rem;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: #2B3742;
+  border-color: #C6A66B;
+  color: #C6A66B;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px 0 rgba(16, 24, 32, 0.3);
+}
+
+/* Light Outline Button: For light backgrounds */
+.btn-light-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  color: #20262D;
+  border: 1px solid #D6D9DE;
+  font-family: var(--font-body) !important;
+  font-size: 0.875rem;
+  font-weight: 700 !important;
+  padding: 0.65rem 1.35rem;
+  border-radius: 0.625rem;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-light-outline:hover {
+  background-color: #E5E8EB;
+  border-color: #C6A66B;
+  color: #101820;
+  transform: translateY(-1px);
+}
+
+/* ---------------- CARD & SURFACE UTILITIES ---------------- */
+
+.card-ivory {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DE;
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 3px 0 rgba(32, 38, 45, 0.04);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-ivory:hover {
+  border-color: #C6A66B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(32, 38, 45, 0.08);
+}
+
+.card-charcoal {
+  background-color: #202A33;
+  border: 1px solid #39434D;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-charcoal:hover {
+  border-color: #C6A66B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+}
+
+.table-header {
+  background-color: #101820;
+  color: #F8F7F2;
+  font-family: var(--font-body) !important;
+  font-size: 0.75rem;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------------- BLUEPRINT & ACCENT UTILITIES ---------------- */
+
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(198, 166, 107, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(198, 166, 107, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(198, 166, 107, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(198, 166, 107, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ---------------- ANIMATED BACKGROUND KEYFRAMES (GPU ACCELERATED) ---------------- */
+
+@keyframes gridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(60px, 60px, 0);
+  }
+}
+
+@keyframes beamSweep {
+  0% {
+    transform: rotate(-25deg) translateY(-100%) scale(1.6);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(-25deg) translateY(100%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes blobSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(30px, -40px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-20px, 25px, 0) scale(0.95);
+  }
+}
+
+@keyframes blobReverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-35px, 30px, 0) scale(0.94);
+  }
+  66% {
+    transform: translate3d(25px, -35px, 0) scale(1.06);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+.animate-grid-drift {
+  animation: gridDrift 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-beam-sweep {
+  animation: beamSweep 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-blob-slow {
+  animation: blobSlow 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-blob-reverse {
+  animation: blobReverse 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-gradient-shift {
+  animation: gradientShift 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-grid-drift,
+  .animate-beam-sweep,
+  .animate-blob-slow,
+  .animate-blob-reverse,
+  .animate-gradient-shift {
+    animation: none !important;
+  }
+}
+
+/* ---------------- CINEMATIC TEXT SHADOW UTILITIES ---------------- */
+.text-shadow-cinematic {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+.text-shadow-subtle {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* ---------------- DEV OVERLAYS & NEXT INDICATORS ---------------- */
+[data-nextjs-dev-indicator],
+[data-nextjs-toast],
+nextjs-portal,
+#nextjs-dev-tools,
+div[data-nextjs-dialog-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
