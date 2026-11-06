@@ -210,6 +210,88 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
           </div>
         </Reveal>
 
+        {/* SURFACE TESTER INVOICE DOCUMENTATION */}
+        <Reveal direction="up" delay={0.15}>
+          <div className="rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-8 shadow-xs space-y-6">
+            {/* Header Bar */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-[#39434D]/15 pb-5 gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs font-bold text-[#D6B36A] uppercase tracking-wider">
+                    Testing Equipment Procurement & Invoice
+                  </span>
+                  <span className="font-mono text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    Official Tax Invoice
+                  </span>
+                </div>
+                <h4 className="font-heading text-xl sm:text-2xl font-bold text-[#101820]">
+                  SURFACE TESTER — TAX INVOICE & SPECIFICATIONS
+                </h4>
+                <p className="text-xs sm:text-sm text-[#5C6670] font-normal">
+                  Commercial procurement tax invoice and technical specification documentation for Surface Roughness Tester
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a
+                  href="/docs/surface-tester-invoice.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
+                >
+                  <ExternalLink className="h-4 w-4 text-[#D6B36A]" />
+                  <span>Open in New Tab</span>
+                </a>
+                <a
+                  href="/docs/surface-tester-invoice.pdf"
+                  download="Surface-Tester-Invoice-Vaishnav-Engineering.pdf"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Download PDF</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Document Meta Strip */}
+            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-xl bg-[#101820] text-[#D6B36A] flex items-center justify-center shrink-0 shadow-xs">
+                  <FileText className="h-4 w-4" />
+                </div>
+                <div>
+                  <span className="font-bold text-[#101820] block text-xs sm:text-sm">
+                    Surface Roughness Tester — Commercial Invoice
+                  </span>
+                  <span className="text-[11px] font-mono text-[#5C6670]">
+                    Verified Tax Invoice Dossier • Source: Surface tester - Invoice.pdf • PDF (423 KB)
+                  </span>
+                </div>
+              </div>
+
+              <a
+                href="/docs/surface-tester-invoice.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs font-bold text-[#101820] bg-[#D6B36A] hover:bg-[#C4A055] px-3.5 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-2xs"
+              >
+                <ExternalLink className="h-3.5 w-3.5 text-[#101820]" />
+                <span>View Full PDF</span>
+              </a>
+            </div>
+
+            {/* Embedded PDF Viewer */}
+            <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[550px] sm:h-[650px] lg:h-[750px]">
+              <iframe
+                src="/docs/surface-tester-invoice.pdf#toolbar=1&navpanes=0&view=FitH"
+                title="Surface Tester Invoice - Vaishnav Engineering"
+                className="w-full h-full bg-white border-0"
+              />
+            </div>
+          </div>
+        </Reveal>
+
         {/* Machinery Details Table / Cards */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
