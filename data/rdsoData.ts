@@ -731,21 +731,6 @@ export const RDSO_MANDATORY_APPROVALS: MandatoryApprovalItem[] = [
       docUrl: "/docs/factory-licence-2026.pdf"
     },
     isVerified: true
-  },
-  {
-    sNo: 5,
-    approvalName: "Information to be updated (Upcoming Environmental Consent)",
-    issuingAuthority: "Pollution Control Board / Competent Authority",
-    registrationNumber: "Information to be updated",
-    issueDate: "Information to be updated",
-    expiryDate: "Information to be updated",
-    status: "Information to be updated",
-    supportingDocument: {
-      title: "Consent Document to be uploaded",
-      ref: "PENDING-UPDATE",
-      docUrl: ""
-    },
-    isVerified: false
   }
 ];
 
