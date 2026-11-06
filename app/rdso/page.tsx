@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { X, ZoomIn, ShieldCheck, Download, ExternalLink, ArrowUp } from "lucide-react";
 import RdsoHero from "@/components/rdso/RdsoHero";
-import RdsoStickyNav from "@/components/rdso/RdsoStickyNav";
+import { RdsoVerticalNav, RdsoMobileNav } from "@/components/rdso/RdsoVerticalNav";
 import Section01Ownership from "@/components/rdso/sections/Section01Ownership";
 import Section02FabricationUnits from "@/components/rdso/sections/Section02FabricationUnits";
 import Section03RdsoApproval from "@/components/rdso/sections/Section03RdsoApproval";
@@ -49,8 +49,8 @@ export default function RdsoPortalPage() {
         });
       },
       {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.2]
+        rootMargin: "-15% 0px -65% 0px",
+        threshold: [0, 0.1]
       }
     );
 
@@ -64,7 +64,7 @@ export default function RdsoPortalPage() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const navOffset = 130;
+      const navOffset = 90;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navOffset;
 
@@ -99,103 +99,119 @@ export default function RdsoPortalPage() {
         onScrollToSection={scrollToSection}
       />
 
-      {/* 2. Sticky Sub-Navigation Bar */}
-      <RdsoStickyNav
-        activeSection={activeSection}
-        onScrollToSection={scrollToSection}
-      />
+      {/* 2. Mobile Collapsible Navigation Bar (Visible only on mobile screens < md) */}
+      <div className="md:hidden sticky top-18 sm:top-[72px] z-30">
+        <RdsoMobileNav
+          activeSection={activeSection}
+          onScrollToSection={scrollToSection}
+        />
+      </div>
 
-      {/* 3. Main 13 Compliance Sections Container */}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 space-y-20 sm:space-y-28">
-        {/* SECTION 01: OWNERSHIP DETAILS */}
-        <section id="sec-01" className="scroll-mt-36">
-          <Section01Ownership />
-        </section>
+      {/* 3. Main Two-Column Layout: Left Vertical Sidebar + Right Main Section Content */}
+      <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12">
+        <div className="flex flex-col md:flex-row items-start gap-6 lg:gap-8 xl:gap-10">
+          
+          {/* LEFT: Persistent Vertical RDSO Navigation Sidebar (Desktop: ~260px, Tablet: ~225px) */}
+          <aside className="hidden md:block shrink-0 md:w-[225px] lg:w-[260px] xl:w-[270px] sticky top-[84px] z-20">
+            <RdsoVerticalNav
+              activeSection={activeSection}
+              onScrollToSection={scrollToSection}
+            />
+          </aside>
 
-        {/* SECTION 02: FABRICATION UNITS */}
-        <section id="sec-02" className="scroll-mt-36">
-          <Section02FabricationUnits
-            onOpenLightbox={(img) => setLightboxImg(img)}
-          />
-        </section>
+          {/* RIGHT: Main RDSO 13 Compliance Sections Container */}
+          <main className="flex-1 min-w-0 w-full space-y-16 sm:space-y-24">
+            {/* SECTION 01: OWNERSHIP DETAILS */}
+            <section id="sec-01" className="scroll-mt-24">
+              <Section01Ownership />
+            </section>
 
-        {/* SECTION 03: RDSO APPROVAL DETAILS */}
-        <section id="sec-03" className="scroll-mt-36">
-          <Section03RdsoApproval
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 02: FABRICATION UNITS */}
+            <section id="sec-02" className="scroll-mt-24">
+              <Section02FabricationUnits
+                onOpenLightbox={(img) => setLightboxImg(img)}
+              />
+            </section>
 
-        {/* SECTION 04: FIRM REGISTRATION DETAILS */}
-        <section id="sec-04" className="scroll-mt-36">
-          <Section04FirmRegistration
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 03: RDSO APPROVAL DETAILS */}
+            <section id="sec-03" className="scroll-mt-24">
+              <Section03RdsoApproval
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 05: FACTORY LICENCE DETAILS */}
-        <section id="sec-05" className="scroll-mt-36">
-          <Section05FactoryLicence
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 04: FIRM REGISTRATION DETAILS */}
+            <section id="sec-04" className="scroll-mt-24">
+              <Section04FirmRegistration
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 06: ISO 9001 CERTIFICATION */}
-        <section id="sec-06" className="scroll-mt-36">
-          <Section06IsoCertification
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 05: FACTORY LICENCE DETAILS */}
+            <section id="sec-05" className="scroll-mt-24">
+              <Section05FactoryLicence
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 07: ORGANISATION STRUCTURE */}
-        <section id="sec-07" className="scroll-mt-36">
-          <Section07OrgStructure />
-        </section>
+            {/* SECTION 06: ISO 9001 CERTIFICATION */}
+            <section id="sec-06" className="scroll-mt-24">
+              <Section06IsoCertification
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 08: TESTING FACILITIES */}
-        <section id="sec-08" className="scroll-mt-36">
-          <Section08TestingFacilities
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-            onOpenLightbox={(img) => setLightboxImg(img)}
-          />
-        </section>
+            {/* SECTION 07: ORGANISATION STRUCTURE */}
+            <section id="sec-07" className="scroll-mt-24">
+              <Section07OrgStructure />
+            </section>
 
-        {/* SECTION 09: MANDATORY APPROVALS */}
-        <section id="sec-09" className="scroll-mt-36">
-          <Section09MandatoryApprovals
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 08: TESTING FACILITIES */}
+            <section id="sec-08" className="scroll-mt-24">
+              <Section08TestingFacilities
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+                onOpenLightbox={(img) => setLightboxImg(img)}
+              />
+            </section>
 
-        {/* SECTION 10: ARTISANS AND WORKFORCE */}
-        <section id="sec-10" className="scroll-mt-36">
-          <Section10ArtisansWorkforce
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 09: MANDATORY APPROVALS */}
+            <section id="sec-09" className="scroll-mt-24">
+              <Section09MandatoryApprovals
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 11: POWER INFRASTRUCTURE */}
-        <section id="sec-11" className="scroll-mt-36">
-          <Section11PowerInfrastructure
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 10: ARTISANS AND WORKFORCE */}
+            <section id="sec-10" className="scroll-mt-24">
+              <Section10ArtisansWorkforce
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 12: EXECUTED WORKS — LAST FIVE YEARS */}
-        <section id="sec-12" className="scroll-mt-36">
-          <Section12ExecutedWorks
-            onOpenLightbox={(img) => setLightboxImg(img)}
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
+            {/* SECTION 11: POWER INFRASTRUCTURE */}
+            <section id="sec-11" className="scroll-mt-24">
+              <Section11PowerInfrastructure
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
 
-        {/* SECTION 13: WORKS IN HAND */}
-        <section id="sec-13" className="scroll-mt-36">
-          <Section13WorksInHand
-            onOpenPdfModal={(docId) => setSelectedDocId(docId)}
-          />
-        </section>
-      </main>
+            {/* SECTION 12: EXECUTED WORKS — LAST FIVE YEARS */}
+            <section id="sec-12" className="scroll-mt-24">
+              <Section12ExecutedWorks
+                onOpenLightbox={(img) => setLightboxImg(img)}
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
+
+            {/* SECTION 13: WORKS IN HAND */}
+            <section id="sec-13" className="scroll-mt-24">
+              <Section13WorksInHand
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
+            </section>
+          </main>
+        </div>
+      </div>
 
       {/* Floating Back to Top Button */}
       {showBackToTop && (
