@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Zap,
   ShieldCheck,
@@ -13,7 +14,9 @@ import {
   Activity,
   Receipt,
   Layers,
-  Info
+  Info,
+  ExternalLink,
+  ZoomIn
 } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_POWER_INFRASTRUCTURE } from "@/data/rdsoData";
@@ -123,51 +126,104 @@ export default function Section11PowerInfrastructure({ onOpenPdfModal }: Section
       </div>
 
       {/* Field 5: Supporting Documents & Utility Sanction */}
-      <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between border-b border-[#39434D]/15 pb-3">
-          <h4 className="font-heading text-sm font-bold text-[#101820] flex items-center gap-2">
-            <FileText className="h-4 w-4 text-[#D6B36A]" />
-            Power Sanction & Electrical Utility Supporting Documents
-          </h4>
-          <span className="text-xs font-mono text-[#89939D]">
-            Official Sanction Order
-          </span>
-        </div>
+      <Reveal direction="up" delay={0.08}>
+        <div className="rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-7 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#39434D]/15 pb-4 gap-2">
+            <div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#D6B36A] block">
+                Official Utility Sanction & Inspection Dossier
+              </span>
+              <h4 className="font-heading text-lg sm:text-xl font-bold text-[#101820] flex items-center gap-2 mt-0.5">
+                <FileText className="h-5 w-5 text-[#D6B36A]" />
+                Power Sanction & Electrical Utility Supporting Documents
+              </h4>
+            </div>
+            <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200 w-fit">
+              Active Utility Sanctions
+            </span>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {RDSO_POWER_INFRASTRUCTURE.supportingDocuments.map((doc, dIdx) => (
-            <div
-              key={dIdx}
-              className="p-4 rounded-xl bg-[#F5F3EE] border border-[#39434D]/15 flex items-center justify-between gap-3"
-            >
-              <div className="space-y-0.5">
-                <h5 className="font-heading text-xs sm:text-sm font-bold text-[#101820]">
-                  {doc.title}
+          {/* Electrical Utility Load & Power Tariff Sanction Order Card with Picture */}
+          <div className="rounded-2xl border border-[#39434D]/20 bg-[#F5F3EE] p-5 sm:p-6 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#39434D]/15 pb-4">
+              <div>
+                <span className="font-mono text-xs font-bold text-[#101820] bg-[#E5E8EB] px-2.5 py-0.5 rounded">
+                  OFFICIAL TANGEDCO STATEMENT
+                </span>
+                <h5 className="font-heading text-base sm:text-lg font-bold text-[#101820] mt-1.5">
+                  Electrical Utility Load & Power Tariff Sanction Order
                 </h5>
-                <p className="text-xs text-[#5C6670]">{doc.authority}</p>
-                <span className="font-mono text-[11px] text-[#D6B36A] font-bold block">{doc.ref}</span>
+                <p className="text-xs text-[#5C6670] mt-0.5">
+                  TANGEDCO High Tension Wing • Consumer #082080131116 • Ref: HT-TAR-250KVA / Service No. 1116
+                </p>
               </div>
 
-              <div className="shrink-0">
-                {doc.docUrl ? (
-                  <button
-                    type="button"
-                    onClick={() => onOpenPdfModal("doc-8")}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3 py-1.5 text-xs font-bold transition-all cursor-pointer"
-                  >
-                    <Download className="h-3 w-3" />
-                    <span>View Order</span>
-                  </button>
-                ) : (
-                  <span className="font-mono text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
-                    {doc.status}
-                  </span>
-                )}
+              <div className="flex flex-wrap items-center gap-2 shrink-0">
+                <a
+                  href="/infrastructure/tangedco-electricity-consumer-details.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-white hover:bg-[#E5E8EB] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
+                >
+                  <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
+                  <span>Open in New Tab</span>
+                </a>
+                <a
+                  href="/infrastructure/tangedco-electricity-consumer-details.jpg"
+                  download="Electrical-Utility-Load-Power-Tariff-Sanction-Order.jpg"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3.5 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  <span>Download Image</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => onOpenPdfModal("doc-8")}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#D6B36A] hover:bg-[#C4A055] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all cursor-pointer shadow-xs"
+                >
+                  <ZoomIn className="h-3.5 w-3.5" />
+                  <span>Enlarge View</span>
+                </button>
               </div>
             </div>
-          ))}
+
+            {/* Picture Display */}
+            <div className="rounded-xl overflow-hidden border border-[#39434D]/20 bg-white shadow-inner">
+              <div className="relative w-full h-[320px] sm:h-[450px] md:h-[560px]">
+                <Image
+                  src="/infrastructure/tangedco-electricity-consumer-details.jpg"
+                  alt="Electrical Utility Load & Power Tariff Sanction Order - TANGEDCO Consumer Statement"
+                  fill
+                  className="object-contain p-2 sm:p-4 bg-white"
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  priority
+                />
+              </div>
+              <div className="p-3 bg-[#E5E8EB] border-t border-[#39434D]/15 flex flex-wrap items-center justify-between text-[11px] font-mono text-[#5C6670] gap-2">
+                <span>Consumer Statement: Thiru. R. Saravanan • M/s Vaishnavi Engineering Works</span>
+                <span className="font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+                  Current Dues: NIL • 3-Phase Industrial Tariff LN3B
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Secondary Supporting Document: Electrical Inspectorate */}
+          <div className="p-4 rounded-xl bg-[#F5F3EE] border border-[#39434D]/15 flex items-center justify-between gap-3">
+            <div className="space-y-0.5">
+              <h5 className="font-heading text-xs sm:text-sm font-bold text-[#101820]">
+                Electrical Inspectorate Safety Compliance Certificate
+              </h5>
+              <p className="text-xs text-[#5C6670]">Chief Electrical Inspector to Government of Tamil Nadu (CEIG)</p>
+              <span className="font-mono text-[11px] text-[#D6B36A] font-bold block">Ref: CEIG/HT/2024/771</span>
+            </div>
+
+            <span className="font-mono text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 shrink-0 font-bold">
+              Valid & Inspected
+            </span>
+          </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* IMPORTANT LOAD CAPACITY DISTINCTION CALLOUT BANNER */}
       <Reveal direction="up" delay={0.1}>

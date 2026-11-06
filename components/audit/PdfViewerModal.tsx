@@ -125,11 +125,22 @@ export default function PdfViewerModal({ doc, onClose }: PdfViewerModalProps) {
                   </a>
                 </div>
                 <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner h-[500px]">
-                  <iframe
-                    src={`${doc.fileUrl}#toolbar=1&navpanes=0`}
-                    title={doc.title}
-                    className="w-full h-full bg-white border-0"
-                  />
+                  {doc.fileUrl.match(/\.(jpg|jpeg|png|webp)$/i) ? (
+                    <div className="w-full h-full flex items-center justify-center p-3 bg-white overflow-auto">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={doc.fileUrl}
+                        alt={doc.title}
+                        className="max-w-full max-h-full object-contain rounded-lg"
+                      />
+                    </div>
+                  ) : (
+                    <iframe
+                      src={`${doc.fileUrl}#toolbar=1&navpanes=0`}
+                      title={doc.title}
+                      className="w-full h-full bg-white border-0"
+                    />
+                  )}
                 </div>
               </div>
             ) : (

@@ -958,8 +958,8 @@ export const RDSO_POWER_INFRASTRUCTURE: PowerInfrastructureDetails = {
     {
       title: "Electrical Utility Load & Power Tariff Sanction Order",
       authority: "TANGEDCO High Tension Wing",
-      docUrl: "/docs/tangedco-power-sanction.pdf",
-      ref: "HT-TAR-250KVA",
+      docUrl: "/infrastructure/tangedco-electricity-consumer-details.jpg",
+      ref: "HT-TAR-250KVA / Consumer #082080131116",
       status: "Active & Valid"
     },
     {

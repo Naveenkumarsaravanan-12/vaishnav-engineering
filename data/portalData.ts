@@ -405,8 +405,8 @@ export const PORTAL_DOCUMENTS: AuditDoc[] = [
     status: "Valid",
     issuingAuthority: "TANGEDCO High Tension Wing",
     fileSize: "1.1 MB",
-    fileUrl: "/docs/tangedco-power-sanction.pdf",
-    description: "Sanctioned 250 kVA 3-phase power load allocation certificate and electricity bills."
+    fileUrl: "/infrastructure/tangedco-electricity-consumer-details.jpg",
+    description: "Official TANGEDCO 3-Phase Industrial Electricity Consumer Statement, Sanctioned Load Allocation & Live Tariff LN3B Record."
   },
   {
     id: "doc-9",
