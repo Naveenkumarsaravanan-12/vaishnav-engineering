@@ -8,9 +8,9 @@ export const metadata = {
   title: "Vaishnav Engineering | Structural Steel & Railway Bridge Fabrication",
   description: "RDSO Approved Category-A Vendor specializing in heavy composite plate girder fabrication, railway infrastructure, and structural steel engineering.",
   icons: {
-    icon: "/logo/logo.jpeg",
-    shortcut: "/logo/logo.jpeg",
-    apple: "/logo/logo.jpeg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
