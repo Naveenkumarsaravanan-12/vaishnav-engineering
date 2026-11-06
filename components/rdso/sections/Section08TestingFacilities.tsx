@@ -5,6 +5,7 @@ import { FlaskConical, Download, CheckCircle2, ZoomIn, FileText, ExternalLink } 
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_TESTING_FACILITIES } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section08TestingFacilitiesProps {
   onOpenPdfModal: (docId: string) => void;
@@ -231,14 +232,12 @@ export default function Section08TestingFacilities({
             </span>
           </div>
 
-          {/* Embedded PDF Viewer */}
-          <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[550px] sm:h-[650px] lg:h-[750px]">
-            <iframe
-              src={`${testingDocUrl}#toolbar=1&navpanes=0&view=FitH`}
-              title="Barath Scan Testing Documentation - Vaishnav Engineering"
-              className="w-full h-full bg-white border-0"
-            />
-          </div>
+          {/* Embedded Custom PDF Viewer */}
+          <CustomPdfViewer
+            src={testingDocUrl}
+            title="Barath Scan Testing Documentation - Vaishnav Engineering"
+            height="h-[550px] sm:h-[650px] lg:h-[750px]"
+          />
         </div>
       </Reveal>
     </div>

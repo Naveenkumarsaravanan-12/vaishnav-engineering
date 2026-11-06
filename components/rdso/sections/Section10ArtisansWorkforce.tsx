@@ -5,6 +5,7 @@ import { Users, ShieldCheck, FileText, ExternalLink, Download, Eye, X, ZoomIn, Z
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_STAFF_DETAILS } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section10ArtisansWorkforceProps {
   onOpenPdfModal?: (docId: string) => void;
@@ -278,21 +279,13 @@ export default function Section10ArtisansWorkforce({ onOpenPdfModal }: Section10
               </div>
             </div>
 
-            {/* Document Body: Scrollable PDF Display */}
+            {/* Document Body: Custom Canvas PDF Display without browser toolbar */}
             <div className="flex-1 overflow-auto bg-[#20262D] p-2 sm:p-4 min-h-[500px] max-h-[75vh] flex justify-center">
-              <div
-                className="w-full h-full min-h-[500px] rounded-xl overflow-hidden bg-white shadow-lg transition-transform duration-200"
-                style={{
-                  width: `${zoom}%`,
-                  maxWidth: zoom <= 100 ? "100%" : "none",
-                }}
-              >
-                <iframe
-                  src={`${staffDocUrl}#toolbar=1&navpanes=0&zoom=${zoom}`}
-                  title="STAFF DETAILS OF VAISHNAV ENGG. - Official PDF Document"
-                  className="w-full h-[72vh] min-h-[500px] bg-white border-0"
-                />
-              </div>
+              <CustomPdfViewer
+                src={staffDocUrl}
+                title="STAFF DETAILS OF VAISHNAV ENGG. - Official PDF Document"
+                height="h-[72vh] min-h-[500px]"
+              />
             </div>
 
             {/* Modal Footer Actions */}

@@ -4,6 +4,7 @@ import { Award, Download, Calendar, CheckCircle2, FileCheck2, ExternalLink } fro
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_ISO_CERTIFICATION } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section06IsoCertificationProps {
   onOpenPdfModal: (docId: string) => void;
@@ -201,13 +202,11 @@ export default function Section06IsoCertification({ onOpenPdfModal }: Section06I
             </div>
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner h-[600px] w-full">
-            <iframe
-              src={`${RDSO_ISO_CERTIFICATION.certificatePdfUrl}#toolbar=1&navpanes=0`}
-              title="Vaishnav Engineering IS/ISO 9001:2015 Certificate"
-              className="w-full h-full bg-white border-0"
-            />
-          </div>
+          <CustomPdfViewer
+            src={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
+            title="Vaishnav Engineering IS/ISO 9001:2015 Certificate"
+            height="h-[600px]"
+          />
         </div>
       </Reveal>
 

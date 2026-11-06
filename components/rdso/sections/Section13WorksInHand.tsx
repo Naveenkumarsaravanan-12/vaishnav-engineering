@@ -17,6 +17,7 @@ import {
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_ONGOING_PROJECTS } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section13WorksInHandProps {
   onOpenPdfModal?: (docId: string) => void;
@@ -309,21 +310,13 @@ export default function Section13WorksInHand({ onOpenPdfModal }: Section13WorksI
               </div>
             </div>
 
-            {/* Document Body: Scrollable PDF Display */}
+            {/* Document Body: Custom Canvas PDF Display without browser toolbar */}
             <div className="flex-1 overflow-auto bg-[#20262D] p-2 sm:p-4 min-h-[500px] max-h-[75vh] flex justify-center">
-              <div
-                className="w-full h-full min-h-[500px] rounded-xl overflow-hidden bg-white shadow-lg transition-transform duration-200"
-                style={{
-                  width: `${zoom}%`,
-                  maxWidth: zoom <= 100 ? "100%" : "none",
-                }}
-              >
-                <iframe
-                  src={`${projectDocUrl}#toolbar=1&navpanes=0&zoom=${zoom}`}
-                  title="ONGOING PROJECT DETAILS OF VAISHNAV ENGINEERING - Official PDF Document"
-                  className="w-full h-[72vh] min-h-[500px] bg-white border-0"
-                />
-              </div>
+              <CustomPdfViewer
+                src={projectDocUrl}
+                title="ONGOING PROJECT DETAILS OF VAISHNAV ENGINEERING - Official PDF Document"
+                height="h-[72vh] min-h-[500px]"
+              />
             </div>
 
             {/* Modal Footer Actions */}

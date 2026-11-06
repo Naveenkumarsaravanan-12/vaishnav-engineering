@@ -5,6 +5,7 @@ import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_EMPLOYEE_ROSTER } from "@/data/rdsoData";
 import OrgChart from "@/components/sections/OrgChart";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 export default function Section07OrgStructure() {
   const doc1Url = "/documents/rdso/organisation-chart.pdf";
@@ -146,14 +147,12 @@ export default function Section07OrgStructure() {
                   </a>
                 </div>
 
-                {/* Embedded PDF Preview */}
-                <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[520px] sm:h-[600px]">
-                  <iframe
-                    src={`${doc1Url}#toolbar=1&navpanes=0&view=FitH`}
-                    title="Organisation Chart - Vaishnav Engineering"
-                    className="w-full h-full bg-white border-0"
-                  />
-                </div>
+                {/* Embedded Custom PDF Preview */}
+                <CustomPdfViewer
+                  src={doc1Url}
+                  title="Organisation Chart - Vaishnav Engineering"
+                  height="h-[520px] sm:h-[600px]"
+                />
               </div>
 
               {/* Footer Meta */}
@@ -212,14 +211,12 @@ export default function Section07OrgStructure() {
                   </a>
                 </div>
 
-                {/* Embedded PDF Preview */}
-                <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[520px] sm:h-[600px]">
-                  <iframe
-                    src={`${doc2Url}#toolbar=1&navpanes=0&view=FitH`}
-                    title="Management & Reporting Structure - Vaishnav Engineering"
-                    className="w-full h-full bg-white border-0"
-                  />
-                </div>
+                {/* Embedded Custom PDF Preview */}
+                <CustomPdfViewer
+                  src={doc2Url}
+                  title="Management & Reporting Structure - Vaishnav Engineering"
+                  height="h-[520px] sm:h-[600px]"
+                />
               </div>
 
               {/* Footer Meta */}

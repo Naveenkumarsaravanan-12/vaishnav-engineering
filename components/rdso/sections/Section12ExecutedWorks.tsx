@@ -17,6 +17,7 @@ import {
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_EXECUTED_WORKS } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section12ExecutedWorksProps {
   onOpenLightbox?: (img: { url: string; title: string; category: string }) => void;
@@ -313,22 +314,13 @@ export default function Section12ExecutedWorks({ onOpenLightbox, onOpenPdfModal 
               </div>
             </div>
 
-            {/* Modal Body: Embedded PDF Canvas */}
-            <div className="relative flex-1 w-full bg-[#39434D]/10 overflow-auto flex items-center justify-center p-1 sm:p-3">
-              <div
-                className="w-full h-full bg-white shadow-lg transition-transform duration-150 origin-top rounded-xl overflow-hidden"
-                style={{
-                  transform: `scale(${zoom / 100})`,
-                  transformOrigin: "top center",
-                  height: zoom > 100 ? `${zoom}%` : "100%"
-                }}
-              >
-                <iframe
-                  src={`${projectDocUrl}#toolbar=1&navpanes=0&view=FitH`}
-                  title="Official Completed Projects Details Document"
-                  className="w-full h-full border-0 bg-white"
-                />
-              </div>
+            {/* Modal Body: Custom Canvas PDF Display without browser toolbar */}
+            <div className="relative flex-1 w-full bg-[#20262D] overflow-hidden flex items-center justify-center p-1 sm:p-3 min-h-[500px]">
+              <CustomPdfViewer
+                src={projectDocUrl}
+                title="Official Completed Projects Details Document"
+                height="h-full"
+              />
             </div>
 
             {/* Modal Footer with Quick Helper */}

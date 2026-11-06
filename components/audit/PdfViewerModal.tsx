@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X, Download, ShieldCheck, FileText, CheckCircle2, Calendar, ExternalLink } from "lucide-react";
 import { AuditDoc } from "@/data/portalData";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface PdfViewerModalProps {
   doc: AuditDoc | null;
@@ -124,7 +125,7 @@ export default function PdfViewerModal({ doc, onClose }: PdfViewerModalProps) {
                     Open in New Tab <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>
-                <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner h-[500px]">
+                <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner h-[520px]">
                   {doc.fileUrl.match(/\.(jpg|jpeg|png|webp)$/i) ? (
                     <div className="w-full h-full flex items-center justify-center p-3 bg-white overflow-auto">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -135,10 +136,10 @@ export default function PdfViewerModal({ doc, onClose }: PdfViewerModalProps) {
                       />
                     </div>
                   ) : (
-                    <iframe
-                      src={`${doc.fileUrl}#toolbar=1&navpanes=0`}
+                    <CustomPdfViewer
+                      src={doc.fileUrl}
                       title={doc.title}
-                      className="w-full h-full bg-white border-0"
+                      height="h-full"
                     />
                   )}
                 </div>

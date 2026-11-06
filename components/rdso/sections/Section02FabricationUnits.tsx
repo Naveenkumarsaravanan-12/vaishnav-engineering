@@ -5,6 +5,7 @@ import { Factory, MapPin, Maximize2, CheckCircle2, Cog, ZoomIn, Building2, Phone
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_FABRICATION_UNITS, FabricationUnitData } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
+import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section02FabricationUnitsProps {
   onOpenLightbox?: (img: { url: string; title: string; category: string }) => void;
@@ -199,14 +200,12 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
               </span>
             </div>
 
-            {/* Embedded PDF Viewer */}
-            <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[550px] sm:h-[650px] lg:h-[750px]">
-              <iframe
-                src="/docs/vaishnav-engineering-facility-machinery-formatted.pdf#toolbar=1&navpanes=0&view=FitH"
-                title="Vaishnav Engineering Facility & Machinery Specifications"
-                className="w-full h-full bg-white border-0"
-              />
-            </div>
+            {/* Embedded Custom PDF Viewer */}
+            <CustomPdfViewer
+              src="/docs/vaishnav-engineering-facility-machinery-formatted.pdf"
+              title="Vaishnav Engineering Facility & Machinery Specifications"
+              height="h-[550px] sm:h-[650px] lg:h-[750px]"
+            />
           </div>
         </Reveal>
 
@@ -281,14 +280,12 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
               </a>
             </div>
 
-            {/* Embedded PDF Viewer */}
-            <div className="rounded-2xl overflow-hidden border border-[#39434D]/20 bg-[#F5F3EE] shadow-inner w-full h-[550px] sm:h-[650px] lg:h-[750px]">
-              <iframe
-                src="/docs/surface-tester-invoice.pdf#toolbar=1&navpanes=0&view=FitH"
-                title="Surface Tester Invoice - Vaishnav Engineering"
-                className="w-full h-full bg-white border-0"
-              />
-            </div>
+            {/* Embedded Custom PDF Viewer */}
+            <CustomPdfViewer
+              src="/docs/surface-tester-invoice.pdf"
+              title="Surface Tester Invoice - Vaishnav Engineering"
+              height="h-[550px] sm:h-[650px] lg:h-[750px]"
+            />
           </div>
         </Reveal>
 
