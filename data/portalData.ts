@@ -288,15 +288,15 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
   {
     id: "p3",
-    title: "ICF Rail Coach Shell Heavy Structural Fabrication",
-    client: "Integral Coach Factory (ICF) Chennai",
+    title: "Tambaram – Perungalathur Composite Girder Road Over Bridge (ROB)",
+    client: "Southern Railway / Thavam Constructions",
     year: "2024",
-    tonnage: "650 MT",
-    spanDetails: "Precision Machined Steel Underframes & Bolster Assemblies",
+    tonnage: "1,180 MT",
+    spanDetails: "1 Span x 52.15m Skew / 49.005m Sq Composite Girder",
     status: "Completed",
-    location: "Perambur, Chennai",
-    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80",
-    description: "High precision laser cut and robotically welded coach underframe members."
+    location: "Tambaram – Perungalathur, Tamil Nadu",
+    image: "/rob/rob-01.png",
+    description: "Re-construction of Road Over Bridges with heavy composite steel girders in lieu of ROB 95B & 159A under RDSO B&S inspection."
   },
   {
     id: "p4",
@@ -314,7 +314,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
 
 export const EXECUTED_WORKS_LOG = [
   { year: "2025", client: "Southern Railway", spans: "18 Spans", tonnage: "2,450 MT", status: "Completed & Handed Over" },
-  { year: "2024", client: "Integral Coach Factory & State Highways", spans: "12 Spans / Shell Units", tonnage: "1,920 MT", status: "Completed & Handed Over" },
+  { year: "2024", client: "State Highways & Southern Railway", spans: "12 Composite Girder Spans", tonnage: "1,920 MT", status: "Completed & Handed Over" },
   { year: "2023", client: "South Central Railway", spans: "14 Structural Portals", tonnage: "1,650 MT", status: "Completed & Handed Over" },
   { year: "2022", client: "Southern Railway B&S Wing", spans: "8 Spans x 30.5m", tonnage: "1,200 MT", status: "Completed & Handed Over" },
   { year: "2021", client: "Railway Infra Contractors", spans: "6 Composite Girders", tonnage: "890 MT", status: "Completed & Handed Over" }
