@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   FileText,
   ExternalLink,
-  Download,
   Eye,
   X,
   ZoomIn,
@@ -62,24 +61,14 @@ export default function Section12ExecutedWorks({ onOpenLightbox, onOpenPdfModal 
         description="A comprehensive record of completed railway bridge girders, composite Road Over Bridges (ROBs), and bowstring steel spans successfully fabricated and inspected by RDSO & SR/FIU."
         statusBadge="7 Completed Projects Verified"
         actionSlot={
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={handleOpenViewer}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-white hover:bg-[#F5F3EE] text-[#101820] px-3.5 py-2 text-xs font-bold border border-[#39434D]/20 shadow-xs transition-all cursor-pointer"
-            >
-              <Eye className="h-3.5 w-3.5 text-[#D6B36A]" />
-              <span>VIEW DOCUMENT</span>
-            </button>
-            <a
-              href={projectDocUrl}
-              download="vaishnav-engineering-completed-projects-details.pdf"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer"
-            >
-              <Download className="h-4 w-4" />
-              <span>DOWNLOAD PDF</span>
-            </a>
-          </div>
+          <button
+            type="button"
+            onClick={handleOpenViewer}
+            className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer active:scale-95"
+          >
+            <Eye className="h-4 w-4" />
+            <span>PREVIEW DOCUMENT</span>
+          </button>
         }
       />
 
@@ -204,15 +193,6 @@ export default function Section12ExecutedWorks({ onOpenLightbox, onOpenPdfModal 
                   <Eye className="h-4 w-4" />
                   <span>VIEW DOCUMENT</span>
                 </button>
-
-                <a
-                  href={projectDocUrl}
-                  download="vaishnav-engineering-completed-projects-details.pdf"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs sm:text-sm font-bold border border-[#39434D]/20 transition-all shadow-2xs active:scale-95"
-                >
-                  <Download className="h-4 w-4 text-[#D6B36A]" />
-                  <span>DOWNLOAD PDF</span>
-                </a>
               </div>
             </div>
           </div>
@@ -290,16 +270,6 @@ export default function Section12ExecutedWorks({ onOpenLightbox, onOpenPdfModal 
                 >
                   <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
                   <span>Open in Tab</span>
-                </a>
-
-                {/* Direct Download in Modal */}
-                <a
-                  href={projectDocUrl}
-                  download="vaishnav-engineering-completed-projects-details.pdf"
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-[#D6B36A] hover:bg-[#c4a159] text-[#101820] px-3 py-1.5 text-xs font-bold transition-all shadow-xs"
-                >
-                  <Download className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">Download</span>
                 </a>
 
                 {/* Close Button */}

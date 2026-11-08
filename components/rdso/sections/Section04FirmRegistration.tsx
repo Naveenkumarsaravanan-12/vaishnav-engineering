@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Download, CheckCircle2 } from "lucide-react";
+import { FileText, Eye, CheckCircle2 } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_FIRM_REGISTRATION } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
@@ -85,7 +85,7 @@ export default function Section04FirmRegistration({ onOpenPdfModal }: Section04F
             Official Supporting Documents ({RDSO_FIRM_REGISTRATION.supportingDocuments.length} Verified Dossiers)
           </h4>
           <span className="text-xs font-mono text-[#89939D]">
-            Downloadable PDFs
+            Official Verification Records
           </span>
         </div>
 
@@ -114,7 +114,7 @@ export default function Section04FirmRegistration({ onOpenPdfModal }: Section04F
                   onClick={() => onOpenPdfModal(dIdx === 0 ? "doc-4" : "doc-5")}
                   className="inline-flex items-center gap-1.5 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3.5 py-2 text-xs font-bold transition-all cursor-pointer"
                 >
-                  <Download className="h-3.5 w-3.5" />
+                  <Eye className="h-3.5 w-3.5" />
                   <span>Inspect PDF</span>
                 </button>
               </div>

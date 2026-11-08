@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { FlaskConical, Download, CheckCircle2, ZoomIn, FileText, ExternalLink } from "lucide-react";
+import { FlaskConical, Eye, CheckCircle2, ZoomIn, FileText } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_TESTING_FACILITIES } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
-import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section08TestingFacilitiesProps {
   onOpenPdfModal: (docId: string) => void;
@@ -157,7 +156,7 @@ export default function Section08TestingFacilities({
                   onClick={() => onOpenPdfModal("doc-6")}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3 py-1.5 text-xs font-bold transition-all cursor-pointer"
                 >
-                  <Download className="h-3 w-3" />
+                  <Eye className="h-3 w-3" />
                   <span>View NABL Cert</span>
                 </button>
               ) : (
@@ -170,45 +169,42 @@ export default function Section08TestingFacilities({
         ))}
       </div>
 
-      {/* TESTING DOCUMENTATION - Embedded PDF Document Viewer */}
+      {/* TESTING DOCUMENTATION - Click-to-Open Document Preview Card */}
       <Reveal direction="up" delay={0.1}>
-        <div className="rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-8 shadow-xs space-y-6">
+        <div
+          onClick={() => onOpenPdfModal("doc-15")}
+          className="group cursor-pointer rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-7 shadow-xs hover:border-[#D6B36A] hover:shadow-md transition-all duration-300 space-y-4"
+        >
           {/* Header Bar */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-[#39434D]/15 pb-5 gap-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-[#39434D]/15 pb-4 gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-bold text-[#D6B36A] uppercase tracking-wider">
                   Accreditation & Inspection Records
                 </span>
+                <span className="font-mono text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  NABL / TC-16221 Verified
+                </span>
               </div>
-              <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#101820]">
-                TESTING DOCUMENTATION
+              <h3 className="font-heading text-lg sm:text-xl font-bold text-[#101820] group-hover:text-[#D6B36A] transition-colors">
+                BARATH SCAN — TESTING & NDT DOCUMENTATION
               </h3>
               <p className="text-xs sm:text-sm text-[#5C6670] font-normal">
                 Technical Certificates, Testing Reports & Accreditation Documents
               </p>
             </div>
 
-            {/* Document Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <a
-                href={testingDocUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-              >
-                <ExternalLink className="h-4 w-4 text-[#D6B36A]" />
-                <span>Open in New Tab</span>
-              </a>
-              <a
-                href={testingDocUrl}
-                download="vaishnav-engineering-barath-scan-ndt-testing.pdf"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-              >
-                <Download className="h-4 w-4" />
-                <span>Download PDF</span>
-              </a>
-            </div>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenPdfModal("doc-15");
+              }}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95 shrink-0"
+            >
+              <Eye className="h-4 w-4" />
+              <span>Preview Dossier</span>
+            </button>
           </div>
 
           {/* Document Meta Strip */}
@@ -219,7 +215,7 @@ export default function Section08TestingFacilities({
               </div>
               <div>
                 <span className="font-bold text-[#101820] block text-xs sm:text-sm">
-                  BARATH SCAN — Testing & Inspection Documentation
+                  Barath Scan NDT Testing & Inspection Dossier
                 </span>
                 <span className="text-[11px] font-mono text-[#5C6670]">
                   Official Metallurgical & Non-Destructive Testing Dossier • PDF (266 KB)
@@ -227,17 +223,10 @@ export default function Section08TestingFacilities({
               </div>
             </div>
 
-            <span className="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
-              Verified Accreditation Record
+            <span className="text-[#D6B36A] font-mono font-bold flex items-center gap-1 group-hover:underline">
+              <Eye className="h-3.5 w-3.5" /> Click to open full PDF preview
             </span>
           </div>
-
-          {/* Embedded Custom PDF Viewer */}
-          <CustomPdfViewer
-            src={testingDocUrl}
-            title="Barath Scan Testing Documentation - Vaishnav Engineering"
-            height="h-[550px] sm:h-[650px] lg:h-[750px]"
-          />
         </div>
       </Reveal>
     </div>

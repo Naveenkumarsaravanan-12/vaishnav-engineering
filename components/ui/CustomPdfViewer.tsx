@@ -40,11 +40,22 @@ export default function CustomPdfViewer({
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [pdfDoc, setPdfDoc] = useState<any>(null);
 
-  // Clean file URL without hash params
-  const cleanSrc = src.split("#")[0];
+  // Clean & validate file URL (allow relative paths or HTTPS; block dangerous schemes like javascript:, data:, etc.)
+  const isSafeProtocol = typeof src === "string" && (
+    src.startsWith("/") || 
+    src.startsWith("https://")
+  ) && !src.toLowerCase().startsWith("javascript:") && !src.toLowerCase().startsWith("data:");
+
+  const cleanSrc = isSafeProtocol ? src.split("#")[0] : "";
 
   // Load PDF Document
   useEffect(() => {
+    if (!cleanSrc) {
+      setError("Invalid or unsupported document path.");
+      setLoading(false);
+      return;
+    }
+
     let isCancelled = false;
     setLoading(true);
     setError(null);
@@ -60,6 +71,7 @@ export default function CustomPdfViewer({
           url: cleanSrc,
           cMapUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/cmaps/",
           cMapPacked: true,
+          isEvalSupported: false, // Security hardening: disable arbitrary script/eval in PDF font/content parser
         });
 
         const doc = await loadingTask.promise;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { X, Download, ShieldCheck, FileText, CheckCircle2, Calendar, ExternalLink } from "lucide-react";
+import { useEffect } from "react";
+import { X, ShieldCheck, FileText, CheckCircle2, Calendar, ExternalLink } from "lucide-react";
 import { AuditDoc } from "@/data/portalData";
 import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
@@ -11,38 +11,28 @@ interface PdfViewerModalProps {
 }
 
 export default function PdfViewerModal({ doc, onClose }: PdfViewerModalProps) {
-  const [downloading, setDownloading] = useState(false);
+  useEffect(() => {
+    if (!doc) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [doc, onClose]);
 
   if (!doc) return null;
 
   const hasRealPdf = Boolean(doc.fileUrl) || doc.id === "doc-1" || doc.id === "doc-2" || doc.id === "doc-3" || doc.id === "doc-4" || doc.id === "doc-5" || doc.id === "doc-6" || doc.id === "doc-10";
-
-  const handleDownload = () => {
-    setDownloading(true);
-    setTimeout(() => {
-      if (hasRealPdf && doc.fileUrl) {
-        const a = document.createElement("a");
-        a.href = doc.fileUrl;
-        a.download = doc.fileUrl.split("/").pop() || `${doc.id}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setDownloading(false);
-        return;
-      }
-      const content = `RDSO AUDIT PORTAL OFFICIAL DOCUMENT VERIFICATION\n--------------------------------------------\nDocument Title: ${doc.title}\nCategory: ${doc.category}\nVersion/Reference: ${doc.version}\nValidity: ${doc.validity}\nIssuing Authority: ${doc.issuingAuthority}\nStatus: ${doc.status}\n\nThis is an official verification record generated for Vaishnav Engineering RDSO Audit Portal.`;
-      const blob = new Blob([content], { type: "text/plain" });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${doc.id}-${doc.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-      setDownloading(false);
-    }, 400);
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#101820]/90 p-3 sm:p-5 backdrop-blur-md">
@@ -170,29 +160,10 @@ export default function PdfViewerModal({ doc, onClose }: PdfViewerModalProps) {
           >
             Close Preview
           </button>
-          {hasRealPdf ? (
-            <a
-              href={doc.fileUrl}
-              download
-              className="inline-flex items-center gap-2 rounded-xl bg-[#C6A66B] hover:bg-[#D8B97E] px-6 py-2.5 text-xs sm:text-sm font-bold text-[#101820] shadow-md transition active:scale-95"
-            >
-              <Download className="h-4 w-4" /> Download Official PDF ({doc.fileSize})
-            </a>
-          ) : (
-            <button
-              onClick={handleDownload}
-              disabled={downloading}
-              className="inline-flex items-center gap-2 rounded-xl bg-[#C6A66B] hover:bg-[#D8B97E] px-6 py-2.5 text-xs sm:text-sm font-bold text-[#101820] shadow-md disabled:opacity-50 transition cursor-pointer active:scale-95"
-            >
-              {downloading ? (
-                <>Generating PDF Download...</>
-              ) : (
-                <>
-                  <Download className="h-4 w-4" /> Download Official PDF ({doc.fileSize})
-                </>
-              )}
-            </button>
-          )}
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-3.5 py-2 rounded-xl border border-emerald-200">
+            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <span>RDSO Audit Evidence Verified</span>
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import ScrollProgressBar from "@/components/motion/ScrollProgressBar";
 import { ThemeProvider } from "next-themes";
 
 export const metadata = {
+  metadataBase: new URL("https://www.vaishnavengineering2009.com"),
   title: "Vaishnav Engineering | Structural Steel & Railway Bridge Fabrication",
   description: "RDSO Approved Category-A Vendor specializing in heavy composite plate girder fabrication, railway infrastructure, and structural steel engineering.",
   icons: {

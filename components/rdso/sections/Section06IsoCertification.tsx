@@ -1,10 +1,9 @@
 "use client";
 
-import { Award, Download, Calendar, CheckCircle2, FileCheck2, ExternalLink } from "lucide-react";
+import { Award, Eye, Calendar, CheckCircle2, FileCheck2, ShieldCheck, FileText } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_ISO_CERTIFICATION } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
-import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section06IsoCertificationProps {
   onOpenPdfModal: (docId: string) => void;
@@ -19,25 +18,14 @@ export default function Section06IsoCertification({ onOpenPdfModal }: Section06I
         description="Comprehensive quality assurance systems, surveillance audit records, and internal audit compliance certifying heavy structural bridge fabrication and erections."
         statusBadge="Certified & Active to Nov 2029"
         actionSlot={
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-white hover:bg-[#F5F3EE] text-[#101820] px-3.5 py-2 text-xs font-bold border border-[#39434D]/20 shadow-xs transition-all"
-            >
-              <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
-              <span>View Certificate</span>
-            </a>
-            <a
-              href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-              download="vaishnav-engineering-iso-9001-certificate.pdf"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer"
-            >
-              <Download className="h-4 w-4" />
-              <span>Download Certificate</span>
-            </a>
-          </div>
+          <button
+            type="button"
+            onClick={() => onOpenPdfModal("doc-2")}
+            className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer active:scale-95"
+          >
+            <Eye className="h-4 w-4" />
+            <span>Preview Certificate</span>
+          </button>
         }
       />
 
@@ -144,35 +132,29 @@ export default function Section06IsoCertification({ onOpenPdfModal }: Section06I
         <div className="rounded-2xl border border-[#39434D]/20 bg-white p-5 shadow-xs flex flex-col justify-between">
           <span className="text-[11px] font-mono text-[#89939D] uppercase block">Certificate PDF</span>
           <div className="flex items-center gap-2 mt-2">
-            <a
-              href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-1 rounded-lg bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] py-2 text-xs font-bold transition-all"
+            <button
+              type="button"
+              onClick={() => onOpenPdfModal("doc-2")}
+              className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] py-2 text-xs font-bold transition-all cursor-pointer"
             >
-              <ExternalLink className="h-3 w-3" />
-              <span>View</span>
-            </a>
-            <a
-              href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-              download="vaishnav-engineering-iso-9001-certificate.pdf"
-              className="flex-1 inline-flex items-center justify-center gap-1 rounded-lg bg-[#D6B36A] hover:bg-[#C6A66B] text-[#101820] py-2 text-xs font-bold transition-all shadow-xs"
-            >
-              <Download className="h-3 w-3" />
-              <span>Download</span>
-            </a>
+              <Eye className="h-3.5 w-3.5" />
+              <span>Preview</span>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Embedded Live Certificate Preview Box */}
+      {/* ISO 9001 Click-to-Open Document Preview Card */}
       <Reveal direction="up" delay={0.1}>
-        <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs space-y-4">
+        <div
+          onClick={() => onOpenPdfModal("doc-2")}
+          className="group cursor-pointer rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:border-[#D6B36A] hover:shadow-md transition-all duration-300 space-y-4"
+        >
           <div className="flex flex-wrap items-center justify-between border-b border-[#39434D]/15 pb-4 gap-3">
             <div>
               <div className="flex items-center gap-2">
                 <FileCheck2 className="h-5 w-5 text-[#D6B36A]" />
-                <h4 className="font-heading text-base font-bold text-[#101820]">
+                <h4 className="font-heading text-base font-bold text-[#101820] group-hover:text-[#D6B36A] transition-colors">
                   Official ISO 9001:2015 Licence Document Preview
                 </h4>
               </div>
@@ -181,32 +163,38 @@ export default function Section06IsoCertification({ onOpenPdfModal }: Section06I
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <a
-                href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-3.5 py-1.5 text-xs font-bold transition-colors border border-[#39434D]/15"
-              >
-                <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
-                <span>Open in New Tab</span>
-              </a>
-              <a
-                href={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-                download="vaishnav-engineering-iso-9001-certificate.pdf"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-[#D6B36A] hover:bg-[#C6A66B] text-[#101820] px-3.5 py-1.5 text-xs font-bold transition-colors shadow-xs"
-              >
-                <Download className="h-3.5 w-3.5" />
-                <span>Download PDF</span>
-              </a>
-            </div>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenPdfModal("doc-2");
+              }}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold transition-colors border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              <span>Preview Document</span>
+            </button>
           </div>
 
-          <CustomPdfViewer
-            src={RDSO_ISO_CERTIFICATION.certificatePdfUrl}
-            title="Vaishnav Engineering IS/ISO 9001:2015 Certificate"
-            height="h-[600px]"
-          />
+          <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-xl bg-[#101820] text-[#D6B36A] flex items-center justify-center shrink-0">
+                <FileText className="h-4 w-4" />
+              </div>
+              <div>
+                <span className="font-bold text-[#101820] block">
+                  Bureau of Indian Standards — QMS Licence QM/L-20260710320
+                </span>
+                <span className="text-[11px] font-mono text-[#5C6670]">
+                  Valid across Units 1, 2, and 3 through 04 November 2029
+                </span>
+              </div>
+            </div>
+
+            <span className="text-[#D6B36A] font-mono font-bold flex items-center gap-1 group-hover:underline">
+              <Eye className="h-3.5 w-3.5" /> Click to view full certificate preview
+            </span>
+          </div>
         </div>
       </Reveal>
 

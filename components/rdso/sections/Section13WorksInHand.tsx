@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   FileText,
   ExternalLink,
-  Download,
   Eye,
   X,
   ZoomIn,
@@ -61,24 +60,14 @@ export default function Section13WorksInHand({ onOpenPdfModal }: Section13WorksI
         description="A comprehensive overview of ongoing railway bridge fabrication, Road Over Bridge (ROB) and infrastructure projects undertaken by Vaishnav Engineering."
         statusBadge="8 Ongoing Projects"
         actionSlot={
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={handleOpenViewer}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-white hover:bg-[#F5F3EE] text-[#101820] px-3.5 py-2 text-xs font-bold border border-[#39434D]/20 shadow-xs transition-all cursor-pointer"
-            >
-              <Eye className="h-3.5 w-3.5 text-[#D6B36A]" />
-              <span>VIEW DOCUMENT</span>
-            </button>
-            <a
-              href={projectDocUrl}
-              download="vaishnav-engineering-ongoing-project-details.pdf"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer"
-            >
-              <Download className="h-4 w-4" />
-              <span>DOWNLOAD PDF</span>
-            </a>
-          </div>
+          <button
+            type="button"
+            onClick={handleOpenViewer}
+            className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer active:scale-95"
+          >
+            <Eye className="h-4 w-4" />
+            <span>PREVIEW DOCUMENT</span>
+          </button>
         }
       />
 
@@ -203,15 +192,6 @@ export default function Section13WorksInHand({ onOpenPdfModal }: Section13WorksI
                   <Eye className="h-4 w-4" />
                   <span>VIEW DOCUMENT</span>
                 </button>
-
-                <a
-                  href={projectDocUrl}
-                  download="vaishnav-engineering-ongoing-project-details.pdf"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs sm:text-sm font-bold border border-[#39434D]/20 transition-all shadow-2xs active:scale-95"
-                >
-                  <Download className="h-4 w-4 text-[#D6B36A]" />
-                  <span>DOWNLOAD PDF</span>
-                </a>
               </div>
             </div>
           </div>
@@ -329,15 +309,9 @@ export default function Section13WorksInHand({ onOpenPdfModal }: Section13WorksI
                 Close Viewer (Esc)
               </button>
 
-              <div className="flex items-center gap-2">
-                <a
-                  href={projectDocUrl}
-                  download="vaishnav-engineering-ongoing-project-details.pdf"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#D6B36A] hover:bg-[#C6A66B] px-5 py-2 text-xs sm:text-sm font-bold text-[#101820] shadow-md transition active:scale-95"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>DOWNLOAD PDF (785 KB)</span>
-                </a>
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-xl border border-emerald-200">
+                <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                <span>Verified Active Project Register</span>
               </div>
             </div>
           </div>

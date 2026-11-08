@@ -130,6 +130,7 @@ export default function RdsoPortalPage() {
             <section id="sec-02" className="scroll-mt-24">
               <Section02FabricationUnits
                 onOpenLightbox={(img) => setLightboxImg(img)}
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
               />
             </section>
 
@@ -163,7 +164,9 @@ export default function RdsoPortalPage() {
 
             {/* SECTION 07: ORGANISATION STRUCTURE */}
             <section id="sec-07" className="scroll-mt-24">
-              <Section07OrgStructure />
+              <Section07OrgStructure
+                onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+              />
             </section>
 
             {/* SECTION 08: TESTING FACILITIES */}
@@ -192,6 +195,7 @@ export default function RdsoPortalPage() {
             <section id="sec-11" className="scroll-mt-24">
               <Section11PowerInfrastructure
                 onOpenPdfModal={(docId) => setSelectedDocId(docId)}
+                onOpenLightbox={(img) => setLightboxImg(img)}
               />
             </section>
 

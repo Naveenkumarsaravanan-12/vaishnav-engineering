@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Award, Download, Calendar, CheckCircle2, History, ExternalLink } from "lucide-react";
+import { ShieldCheck, Award, Eye, Calendar, CheckCircle2, History, ExternalLink } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_APPROVAL_RECORDS } from "@/data/rdsoData";
 import { RDSO_APPROVAL_INFO } from "@/data/portalData";
@@ -24,8 +24,8 @@ export default function Section03RdsoApproval({ onOpenPdfModal }: Section03RdsoA
             onClick={() => onOpenPdfModal("doc-1")}
             className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer"
           >
-            <Download className="h-4 w-4" />
-            <span>View RDSO Certificate (PDF)</span>
+            <Eye className="h-4 w-4" />
+            <span>Preview RDSO Certificate</span>
           </button>
         }
       />

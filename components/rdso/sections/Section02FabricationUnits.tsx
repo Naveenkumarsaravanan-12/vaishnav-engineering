@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { Factory, MapPin, Maximize2, CheckCircle2, Cog, ZoomIn, Building2, Phone, Mail, Clock, FileText, Download, ExternalLink } from "lucide-react";
+import { Factory, MapPin, Maximize2, CheckCircle2, Cog, ZoomIn, Building2, Phone, Mail, Clock, FileText, Eye } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_FABRICATION_UNITS, FabricationUnitData } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
-import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
 interface Section02FabricationUnitsProps {
   onOpenLightbox?: (img: { url: string; title: string; category: string }) => void;
+  onOpenPdfModal?: (docId: string) => void;
 }
 
-export default function Section02FabricationUnits({ onOpenLightbox }: Section02FabricationUnitsProps) {
+export default function Section02FabricationUnits({ onOpenLightbox, onOpenPdfModal }: Section02FabricationUnitsProps) {
   const currentUnit = RDSO_FABRICATION_UNITS[0];
 
   return (
@@ -135,11 +135,13 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
           </div>
         </Reveal>
 
-        {/* FACILITY & MACHINERY SPECIFICATIONS - Embedded PDF Document Viewer (Replaced 12 Facility Categories) */}
+        {/* FACILITY & MACHINERY SPECIFICATIONS - Click-to-Open Document Preview Card */}
         <Reveal direction="up" delay={0.1}>
-          <div className="rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-8 shadow-xs space-y-6">
-            {/* Header Bar */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-[#39434D]/15 pb-5 gap-4">
+          <div
+            onClick={() => onOpenPdfModal?.("doc-11")}
+            className="group cursor-pointer rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-7 shadow-xs hover:border-[#D6B36A] hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#39434D]/15 pb-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs font-bold text-[#D6B36A] uppercase tracking-wider">
@@ -149,7 +151,7 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                     RDSO Compliance Verified
                   </span>
                 </div>
-                <h4 className="font-heading text-xl sm:text-2xl font-bold text-[#101820]">
+                <h4 className="font-heading text-lg sm:text-xl font-bold text-[#101820] group-hover:text-[#D6B36A] transition-colors">
                   FACILITY & MACHINERY SPECIFICATIONS
                 </h4>
                 <p className="text-xs sm:text-sm text-[#5C6670] font-normal">
@@ -157,30 +159,20 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                 </p>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-2.5">
-                <a
-                  href="/docs/vaishnav-engineering-facility-machinery-formatted.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-                >
-                  <ExternalLink className="h-4 w-4 text-[#D6B36A]" />
-                  <span>Open in New Tab</span>
-                </a>
-                <a
-                  href="/docs/vaishnav-engineering-facility-machinery-formatted.pdf"
-                  download="vaishnav-engineering-facility-machinery-formatted.pdf"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Download PDF</span>
-                </a>
-              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenPdfModal?.("doc-11");
+                }}
+                className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95 shrink-0"
+              >
+                <Eye className="h-4 w-4" />
+                <span>Preview Document</span>
+              </button>
             </div>
 
-            {/* Document Meta Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-[#101820] text-[#D6B36A] flex items-center justify-center shrink-0 shadow-xs">
                   <FileText className="h-4 w-4" />
@@ -195,25 +187,20 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                 </div>
               </div>
 
-              <span className="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
-                Verified Plant Record
+              <span className="text-[#D6B36A] font-mono font-bold flex items-center gap-1 group-hover:underline">
+                <Eye className="h-3.5 w-3.5" /> Click to open full PDF preview
               </span>
             </div>
-
-            {/* Embedded Custom PDF Viewer */}
-            <CustomPdfViewer
-              src="/docs/vaishnav-engineering-facility-machinery-formatted.pdf"
-              title="Vaishnav Engineering Facility & Machinery Specifications"
-              height="h-[550px] sm:h-[650px] lg:h-[750px]"
-            />
           </div>
         </Reveal>
 
-        {/* SURFACE TESTER INVOICE DOCUMENTATION */}
+        {/* SURFACE TESTER INVOICE DOCUMENTATION - Click-to-Open Document Preview Card */}
         <Reveal direction="up" delay={0.15}>
-          <div className="rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-8 shadow-xs space-y-6">
-            {/* Header Bar */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-[#39434D]/15 pb-5 gap-4">
+          <div
+            onClick={() => onOpenPdfModal?.("doc-12")}
+            className="group cursor-pointer rounded-3xl border border-[#39434D]/20 bg-white p-6 sm:p-7 shadow-xs hover:border-[#D6B36A] hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#39434D]/15 pb-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs font-bold text-[#D6B36A] uppercase tracking-wider">
@@ -223,7 +210,7 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                     Official Tax Invoice
                   </span>
                 </div>
-                <h4 className="font-heading text-xl sm:text-2xl font-bold text-[#101820]">
+                <h4 className="font-heading text-lg sm:text-xl font-bold text-[#101820] group-hover:text-[#D6B36A] transition-colors">
                   SURFACE TESTER — TAX INVOICE & SPECIFICATIONS
                 </h4>
                 <p className="text-xs sm:text-sm text-[#5C6670] font-normal">
@@ -231,30 +218,20 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                 </p>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-2.5">
-                <a
-                  href="/docs/surface-tester-invoice.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-4 py-2.5 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-                >
-                  <ExternalLink className="h-4 w-4 text-[#D6B36A]" />
-                  <span>Open in New Tab</span>
-                </a>
-                <a
-                  href="/docs/surface-tester-invoice.pdf"
-                  download="Surface-Tester-Invoice-Vaishnav-Engineering.pdf"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Download PDF</span>
-                </a>
-              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenPdfModal?.("doc-12");
+                }}
+                className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95 shrink-0"
+              >
+                <Eye className="h-4 w-4" />
+                <span>Preview Invoice</span>
+              </button>
             </div>
 
-            {/* Document Meta Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 text-xs">
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-[#101820] text-[#D6B36A] flex items-center justify-center shrink-0 shadow-xs">
                   <FileText className="h-4 w-4" />
@@ -269,23 +246,10 @@ export default function Section02FabricationUnits({ onOpenLightbox }: Section02F
                 </div>
               </div>
 
-              <a
-                href="/docs/surface-tester-invoice.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-xs font-bold text-[#101820] bg-[#D6B36A] hover:bg-[#C4A055] px-3.5 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-2xs"
-              >
-                <ExternalLink className="h-3.5 w-3.5 text-[#101820]" />
-                <span>View Full PDF</span>
-              </a>
+              <span className="text-[#D6B36A] font-mono font-bold flex items-center gap-1 group-hover:underline">
+                <Eye className="h-3.5 w-3.5" /> Click to open full PDF preview
+              </span>
             </div>
-
-            {/* Embedded Custom PDF Viewer */}
-            <CustomPdfViewer
-              src="/docs/surface-tester-invoice.pdf"
-              title="Surface Tester Invoice - Vaishnav Engineering"
-              height="h-[550px] sm:h-[650px] lg:h-[750px]"
-            />
           </div>
         </Reveal>
 

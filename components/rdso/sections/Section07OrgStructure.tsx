@@ -1,13 +1,16 @@
 "use client";
 
-import { UserCheck, FileText, ExternalLink, Download } from "lucide-react";
+import { UserCheck, FileText, Eye } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_EMPLOYEE_ROSTER } from "@/data/rdsoData";
 import OrgChart from "@/components/sections/OrgChart";
 import { Reveal } from "@/components/motion";
-import CustomPdfViewer from "@/components/ui/CustomPdfViewer";
 
-export default function Section07OrgStructure() {
+interface Section07OrgStructureProps {
+  onOpenPdfModal?: (docId: string) => void;
+}
+
+export default function Section07OrgStructure({ onOpenPdfModal }: Section07OrgStructureProps) {
   const doc1Url = "/documents/rdso/organisation-chart.pdf";
   const doc2Url = "/documents/rdso/management-reporting-structure.pdf";
 
@@ -124,41 +127,38 @@ export default function Section07OrgStructure() {
                       </p>
                     </div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenPdfModal?.("doc-13")}
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95 shrink-0"
+                  >
+                    <Eye className="h-4 w-4" />
+                    <span>Preview Document</span>
+                  </button>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={doc1Url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
-                    <span>Open in New Tab</span>
-                  </a>
-                  <a
-                    href={doc1Url}
-                    download="Organisation-Chart-Vaishnav-Engineering.pdf"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3.5 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    <span>Download PDF</span>
-                  </a>
+                {/* Clickable Card Body */}
+                <div
+                  onClick={() => onOpenPdfModal?.("doc-13")}
+                  className="cursor-pointer rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 p-5 space-y-3 group hover:border-[#D6B36A] transition-colors"
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-[#101820] flex items-center gap-1.5">
+                      <FileText className="h-4 w-4 text-[#D6B36A]" /> AutoCAD 3D Technical Drawing
+                    </span>
+                    <span className="font-mono text-[#89939D]">1.44 MB • PDF</span>
+                  </div>
+                  <p className="text-xs text-[#5C6670]">
+                    Complete operational layout, equipment workflows, and supervisory tier structure.
+                  </p>
+                  <div className="pt-2 border-t border-[#39434D]/10 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-[#89939D]">Source: Auto Cad 3d Inv.pdf</span>
+                    <span className="text-[#D6B36A] font-bold flex items-center gap-1 group-hover:underline">
+                      <Eye className="h-3 w-3" /> Click to open PDF preview
+                    </span>
+                  </div>
                 </div>
-
-                {/* Embedded Custom PDF Preview */}
-                <CustomPdfViewer
-                  src={doc1Url}
-                  title="Organisation Chart - Vaishnav Engineering"
-                  height="h-[520px] sm:h-[600px]"
-                />
-              </div>
-
-              {/* Footer Meta */}
-              <div className="pt-3 border-t border-[#39434D]/10 flex items-center justify-between text-[11px] font-mono text-[#89939D]">
-                <span>Source: Auto Cad 3d Inv.pdf</span>
-                <span className="text-[#101820] font-semibold">1.44 MB</span>
               </div>
             </div>
 
@@ -188,41 +188,38 @@ export default function Section07OrgStructure() {
                       </p>
                     </div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenPdfModal?.("doc-14")}
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 shadow-xs cursor-pointer active:scale-95 shrink-0"
+                  >
+                    <Eye className="h-4 w-4" />
+                    <span>Preview Document</span>
+                  </button>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={doc2Url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#F5F3EE] hover:bg-[#E5E8EB] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
-                    <span>Open in New Tab</span>
-                  </a>
-                  <a
-                    href={doc2Url}
-                    download="Management-Reporting-Structure-Vaishnav-Engineering.pdf"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3.5 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    <span>Download PDF</span>
-                  </a>
+                {/* Clickable Card Body */}
+                <div
+                  onClick={() => onOpenPdfModal?.("doc-14")}
+                  className="cursor-pointer rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 p-5 space-y-3 group hover:border-[#D6B36A] transition-colors"
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-[#101820] flex items-center gap-1.5">
+                      <FileText className="h-4 w-4 text-[#D6B36A]" /> Administrative & QA Matrix
+                    </span>
+                    <span className="font-mono text-[#89939D]">1.18 MB • PDF</span>
+                  </div>
+                  <p className="text-xs text-[#5C6670]">
+                    Supervisory chain of command, quality assurance cell, welding coordinators, and safety heads.
+                  </p>
+                  <div className="pt-2 border-t border-[#39434D]/10 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-[#89939D]">Source: DOC-20260716-WA0001..pdf</span>
+                    <span className="text-[#D6B36A] font-bold flex items-center gap-1 group-hover:underline">
+                      <Eye className="h-3 w-3" /> Click to open PDF preview
+                    </span>
+                  </div>
                 </div>
-
-                {/* Embedded Custom PDF Preview */}
-                <CustomPdfViewer
-                  src={doc2Url}
-                  title="Management & Reporting Structure - Vaishnav Engineering"
-                  height="h-[520px] sm:h-[600px]"
-                />
-              </div>
-
-              {/* Footer Meta */}
-              <div className="pt-3 border-t border-[#39434D]/10 flex items-center justify-between text-[11px] font-mono text-[#89939D]">
-                <span>Source: DOC-20260716-WA0001..pdf</span>
-                <span className="text-[#101820] font-semibold">1.18 MB</span>
               </div>
             </div>
           </div>

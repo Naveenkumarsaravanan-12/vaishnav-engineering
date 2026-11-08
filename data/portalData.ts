@@ -431,6 +431,78 @@ export const PORTAL_DOCUMENTS: AuditDoc[] = [
     fileSize: "780 KB",
     fileUrl: "/docs/vaishnav-engineering-staff-details.pdf",
     description: "Official technical muster roll and staff details document specifying verified personnel across engineering, quality control, operations, and skilled plant operatives."
+  },
+  {
+    id: "doc-7",
+    title: "Official Completed Projects Details (Last 5 Years)",
+    category: "Projects",
+    version: "VE-COMPLETED-2026",
+    validity: "Verified",
+    status: "Approved",
+    issuingAuthority: "Vaishnav Engineering Projects Division",
+    fileSize: "806 KB",
+    fileUrl: "/docs/vaishnav-engineering-completed-projects-details.pdf",
+    description: "Official completed projects register with comprehensive execution details for Indian Railways, RVNL, and State Highways."
+  },
+  {
+    id: "doc-11",
+    title: "Facility & Machinery Specifications Dossier",
+    category: "Infrastructure",
+    version: "VE-PLANT-SPEC-2026",
+    validity: "Permanent",
+    status: "Approved",
+    issuingAuthority: "Vaishnav Engineering Operations & Maintenance Wing",
+    fileSize: "3.63 MB",
+    fileUrl: "/docs/vaishnav-engineering-facility-machinery-formatted.pdf",
+    description: "Complete technical dossier, machinery schedules, capacities & calibrated fabrication plant inventory."
+  },
+  {
+    id: "doc-12",
+    title: "Surface Roughness Tester — Commercial Tax Invoice & Calibration Specifications",
+    category: "Infrastructure",
+    version: "INV-2025-SURF",
+    validity: "Verified",
+    status: "Approved",
+    issuingAuthority: "Authorized Testing Equipment Supplier",
+    fileSize: "423 KB",
+    fileUrl: "/docs/surface-tester-invoice.pdf",
+    description: "Official tax invoice and procurement specifications for Surface Roughness Tester."
+  },
+  {
+    id: "doc-13",
+    title: "Vaishnav Engineering Official Organisation Chart",
+    category: "Company",
+    version: "VE-ORG-2026",
+    validity: "Active",
+    status: "Approved",
+    issuingAuthority: "Vaishnav Engineering Board of Governance",
+    fileSize: "PDF Document",
+    fileUrl: "/docs/vaishnav-engineering-organisation-chart.pdf",
+    description: "Official corporate hierarchy and administrative reporting chain from Managing Director down to plant supervisors."
+  },
+  {
+    id: "doc-14",
+    title: "Key Technical & Quality Management Structure",
+    category: "Company",
+    version: "VE-MGMT-2026",
+    validity: "Active",
+    status: "Approved",
+    issuingAuthority: "Quality Assurance & Production Operations Division",
+    fileSize: "PDF Document",
+    fileUrl: "/docs/vaishnav-engineering-management-structure.pdf",
+    description: "Technical engineering reporting chain, quality inspection tiers, welding audit team, and safety oversight framework."
+  },
+  {
+    id: "doc-15",
+    title: "Barath Scan NDT Testing & Metallurgical Inspection Dossier",
+    category: "Quality",
+    version: "TC-16221/NDT",
+    validity: "25-Apr-2029",
+    status: "Certified",
+    issuingAuthority: "Barath Metallurgical Laboratory (NABL Accredited)",
+    fileSize: "266 KB",
+    fileUrl: "/docs/vaishnav-engineering-barath-scan-ndt-testing.pdf",
+    description: "Comprehensive non-destructive examination report covering ultrasonic flaw detection, radiographic testing, and dye penetrant inspection."
   }
 ];
 

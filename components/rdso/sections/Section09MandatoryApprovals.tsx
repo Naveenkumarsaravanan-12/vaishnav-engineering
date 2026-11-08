@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Download, CheckCircle2, ShieldCheck, Calendar, FileText } from "lucide-react";
+import { Award, Eye, CheckCircle2, ShieldCheck, Calendar, FileText } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import RdsoPlaceholder from "@/components/rdso/RdsoPlaceholder";
 import { RDSO_MANDATORY_APPROVALS, MandatoryApprovalItem } from "@/data/rdsoData";
@@ -105,8 +105,8 @@ export default function Section09MandatoryApprovals({ onOpenPdfModal }: Section0
                             onClick={() => onOpenPdfModal(item.sNo === 1 ? "doc-6" : item.sNo === 4 ? "doc-3" : "doc-1")}
                             className="inline-flex items-center gap-1.5 rounded-lg bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3 py-1.5 text-xs font-bold transition-all cursor-pointer"
                           >
-                            <Download className="h-3 w-3" />
-                            <span>PDF</span>
+                            <Eye className="h-3 w-3" />
+                            <span>View PDF</span>
                           </button>
                         ) : (
                           <span className="font-mono text-[11px] text-[#89939D] bg-[#F5F3EE] px-2 py-1 rounded">

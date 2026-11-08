@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, Calendar, Award, FileText, ArrowDown, Download, CheckCircle2, Factory } from "lucide-react";
+import { ShieldCheck, Calendar, Award, FileText, ArrowDown, Eye, CheckCircle2, Factory } from "lucide-react";
 import { Reveal, AnimatedBackground, Counter } from "@/components/motion";
 import { RDSO_APPROVAL_INFO } from "@/data/portalData";
 
@@ -72,8 +72,8 @@ export default function RdsoHero({ onOpenPdfModal, onScrollToSection }: RdsoHero
                   onClick={() => onOpenPdfModal("doc-1")}
                   className="inline-flex items-center gap-2 rounded-xl bg-[#202A33] hover:bg-[#2B3844] text-[#F5F1E8] hover:text-white px-5 py-3 text-xs sm:text-sm font-bold border border-[#D6B36A]/40 transition-all cursor-pointer"
                 >
-                  <Download className="h-4 w-4 text-[#D6B36A]" />
-                  <span>Download RDSO Certificate (PDF)</span>
+                  <Eye className="h-4 w-4 text-[#D6B36A]" />
+                  <span>Preview RDSO Certificate</span>
                 </button>
               </div>
             </Reveal>

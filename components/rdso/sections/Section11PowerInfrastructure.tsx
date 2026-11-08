@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   Zap,
   ShieldCheck,
-  Download,
   BatteryCharging,
   Factory,
   FileText,
@@ -15,7 +14,7 @@ import {
   Receipt,
   Layers,
   Info,
-  ExternalLink,
+  Eye,
   ZoomIn
 } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
@@ -24,10 +23,26 @@ import { Reveal } from "@/components/motion";
 
 interface Section11PowerInfrastructureProps {
   onOpenPdfModal: (docId: string) => void;
+  onOpenLightbox?: (img: { url: string; title: string; category: string }) => void;
 }
 
-export default function Section11PowerInfrastructure({ onOpenPdfModal }: Section11PowerInfrastructureProps) {
+export default function Section11PowerInfrastructure({
+  onOpenPdfModal,
+  onOpenLightbox
+}: Section11PowerInfrastructureProps) {
   const { tangedcoConnection, tangedcoTariff, tangedcoBilling, loadCapacityDistinctionNote } = RDSO_POWER_INFRASTRUCTURE;
+
+  const handleOpenSanctionOrder = () => {
+    if (onOpenLightbox) {
+      onOpenLightbox({
+        url: "/infrastructure/tangedco-electricity-consumer-details.jpg",
+        title: "Electrical Utility Load & Power Tariff Sanction Order — TANGEDCO High-Tension Statement",
+        category: "TANGEDCO Sanction Order"
+      });
+    } else {
+      onOpenPdfModal("doc-8");
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -143,7 +158,7 @@ export default function Section11PowerInfrastructure({ onOpenPdfModal }: Section
             </span>
           </div>
 
-          {/* Electrical Utility Load & Power Tariff Sanction Order Card with Picture */}
+          {/* Electrical Utility Load & Power Tariff Sanction Order Click-to-Open Document Preview Card */}
           <div className="rounded-2xl border border-[#39434D]/20 bg-[#F5F3EE] p-5 sm:p-6 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#39434D]/15 pb-4">
               <div>
@@ -158,52 +173,70 @@ export default function Section11PowerInfrastructure({ onOpenPdfModal }: Section
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 shrink-0">
-                <a
-                  href="/infrastructure/tangedco-electricity-consumer-details.jpg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-white hover:bg-[#E5E8EB] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all border border-[#39434D]/15 cursor-pointer shadow-xs"
-                >
-                  <ExternalLink className="h-3.5 w-3.5 text-[#D6B36A]" />
-                  <span>Open in New Tab</span>
-                </a>
-                <a
-                  href="/infrastructure/tangedco-electricity-consumer-details.jpg"
-                  download="Electrical-Utility-Load-Power-Tariff-Sanction-Order.jpg"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-3.5 py-2 text-xs font-bold transition-all border border-[#D6B36A]/40 cursor-pointer shadow-xs"
-                >
-                  <Download className="h-3.5 w-3.5" />
-                  <span>Download Image</span>
-                </a>
+              <div className="flex items-center gap-2 shrink-0">
                 <button
                   type="button"
-                  onClick={() => onOpenPdfModal("doc-8")}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#D6B36A] hover:bg-[#C4A055] text-[#101820] px-3.5 py-2 text-xs font-bold transition-all cursor-pointer shadow-xs"
+                  onClick={handleOpenSanctionOrder}
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2.5 text-xs font-bold transition-all cursor-pointer shadow-xs border border-[#D6B36A]/40 active:scale-95"
                 >
-                  <ZoomIn className="h-3.5 w-3.5" />
-                  <span>Enlarge View</span>
+                  <Eye className="h-4 w-4" />
+                  <span>View Statement</span>
                 </button>
               </div>
             </div>
 
-            {/* Picture Display */}
-            <div className="rounded-xl overflow-hidden border border-[#39434D]/20 bg-white shadow-inner">
-              <div className="relative w-full h-[320px] sm:h-[450px] md:h-[560px]">
-                <Image
-                  src="/infrastructure/tangedco-electricity-consumer-details.jpg"
-                  alt="Electrical Utility Load & Power Tariff Sanction Order - TANGEDCO Consumer Statement"
-                  fill
-                  className="object-contain p-2 sm:p-4 bg-white"
-                  sizes="(max-width: 768px) 100vw, 90vw"
-                  priority
-                />
-              </div>
-              <div className="p-3 bg-[#E5E8EB] border-t border-[#39434D]/15 flex flex-wrap items-center justify-between text-[11px] font-mono text-[#5C6670] gap-2">
-                <span>Consumer Statement: Thiru. R. Saravanan • M/s Vaishnavi Engineering Works</span>
-                <span className="font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
-                  Current Dues: NIL • 3-Phase Industrial Tariff LN3B
-                </span>
+            {/* Clickable Image Preview Thumbnail Card */}
+            <div
+              onClick={handleOpenSanctionOrder}
+              className="group relative cursor-pointer rounded-xl overflow-hidden border border-[#39434D]/20 bg-white shadow-xs hover:border-[#D6B36A] transition-all duration-300"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 items-center">
+                {/* Thumbnail Preview */}
+                <div className="md:col-span-5 relative h-44 sm:h-48 w-full rounded-lg overflow-hidden border border-[#39434D]/15 bg-[#F8F7F2]">
+                  <Image
+                    src="/infrastructure/tangedco-electricity-consumer-details.jpg"
+                    alt="Electrical Utility Load & Power Tariff Sanction Order - TANGEDCO Consumer Statement"
+                    fill
+                    className="object-contain p-2 group-hover:scale-102 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                  {/* Subtle hover overlay */}
+                  <div className="absolute inset-0 bg-[#101820]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-xs font-bold">
+                    <ZoomIn className="h-4 w-4 text-[#D6B36A]" />
+                    <span>Click to Enlarge</span>
+                  </div>
+                </div>
+
+                {/* Metadata & Key Information Grid */}
+                <div className="md:col-span-7 space-y-3">
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="p-2.5 rounded-lg bg-[#F5F3EE] border border-[#39434D]/10">
+                      <span className="text-[10px] font-mono text-[#89939D] uppercase block">Consumer Name</span>
+                      <strong className="text-[#101820] text-xs">THIRU. R. SARAVANAN</strong>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-[#F5F3EE] border border-[#39434D]/10">
+                      <span className="text-[10px] font-mono text-[#89939D] uppercase block">Consumer Number</span>
+                      <strong className="text-[#101820] font-mono text-xs">082080131116</strong>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-[#F5F3EE] border border-[#39434D]/10">
+                      <span className="text-[10px] font-mono text-[#89939D] uppercase block">Sanctioned Load</span>
+                      <strong className="text-[#D6B36A] font-mono text-xs">44 KW • 3 Phase</strong>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-[#F5F3EE] border border-[#39434D]/10">
+                      <span className="text-[10px] font-mono text-[#89939D] uppercase block">Tariff Code</span>
+                      <strong className="text-[#101820] font-mono text-xs">LN3B / Non-Metro</strong>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-between text-[11px] font-mono text-[#5C6670] pt-1">
+                    <span className="text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      Service Status: LIVE • Dues: NIL
+                    </span>
+                    <span className="text-[#D6B36A] font-bold flex items-center gap-1 group-hover:underline">
+                      <Eye className="h-3 w-3" /> Click card to inspect full high-resolution image
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Download, Calendar, MapPin, Building2, CheckCircle2, FileText, Users, Zap } from "lucide-react";
+import { ShieldCheck, Eye, Calendar, MapPin, Building2, CheckCircle2, FileText, Users, Zap } from "lucide-react";
 import RdsoSectionHeader from "@/components/rdso/RdsoSectionHeader";
 import { RDSO_FACTORY_LICENCE } from "@/data/rdsoData";
 import { Reveal } from "@/components/motion";
@@ -23,8 +23,8 @@ export default function Section05FactoryLicence({ onOpenPdfModal }: Section05Fac
             onClick={() => onOpenPdfModal("doc-3")}
             className="inline-flex items-center gap-2 rounded-xl bg-[#101820] hover:bg-[#202A33] text-[#D6B36A] px-4 py-2 text-xs font-bold border border-[#D6B36A]/40 shadow-xs transition-all cursor-pointer"
           >
-            <Download className="h-4 w-4" />
-            <span>Download Factory Licence PDF</span>
+            <Eye className="h-4 w-4" />
+            <span>Preview Factory Licence</span>
           </button>
         }
       />
@@ -146,7 +146,7 @@ export default function Section05FactoryLicence({ onOpenPdfModal }: Section05Fac
                     onClick={() => onOpenPdfModal("doc-3")}
                     className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D6B36A] to-[#C6A66B] hover:from-[#E2C785] hover:to-[#D6B36A] text-[#101820] py-2.5 text-xs font-bold shadow-md transition-all cursor-pointer"
                   >
-                    <Download className="h-3.5 w-3.5" />
+                    <Eye className="h-3.5 w-3.5" />
                     <span>View Official Inspection Certificate (PDF)</span>
                   </button>
                 </div>
