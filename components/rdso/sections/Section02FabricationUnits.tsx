@@ -18,6 +18,7 @@ export default function Section02FabricationUnits({ onOpenLightbox, onOpenPdfMod
     <div className="space-y-8">
       <RdsoSectionHeader
         number="02"
+        category="FABRICATION INFRASTRUCTURE"
         title="Fabrication Units & Infrastructure"
         description="Heavy structural bridge fabrication facility covering template drafting, CNC cutting, automated SAW welding, hydraulic straightening, SA 2.5 shot blasting, protective painting, and 61m trial assembly beds."
         statusBadge="Unit 1 Plant Verified"

@@ -18,6 +18,7 @@ export default function Section07OrgStructure({ onOpenPdfModal }: Section07OrgSt
     <div className="space-y-8">
       <RdsoSectionHeader
         number="07"
+        category="ORGANISATION STRUCTURE"
         title="Organisation Structure & Key Personnel"
         description="Authoritative plant management hierarchy, departmental reporting structure, and certified technical staff roster meeting strict RDSO Part-A qualification guidelines."
         statusBadge="RDSO Qualified Hierarchy"

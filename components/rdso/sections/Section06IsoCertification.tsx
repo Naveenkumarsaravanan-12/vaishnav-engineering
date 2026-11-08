@@ -14,6 +14,7 @@ export default function Section06IsoCertification({ onOpenPdfModal }: Section06I
     <div className="space-y-8">
       <RdsoSectionHeader
         number="06"
+        category="ISO 9001 CERTIFICATION"
         title="ISO 9001:2015 Quality Management System"
         description="Comprehensive quality assurance systems, surveillance audit records, and internal audit compliance certifying heavy structural bridge fabrication and erections."
         statusBadge="Certified & Active to Nov 2029"

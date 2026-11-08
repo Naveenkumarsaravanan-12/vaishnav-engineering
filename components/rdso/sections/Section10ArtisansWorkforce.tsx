@@ -45,6 +45,7 @@ export default function Section10ArtisansWorkforce({ onOpenPdfModal }: Section10
     <div className="space-y-8">
       <RdsoSectionHeader
         number="10"
+        category="WORKFORCE & ARTISANS"
         title="Staff Details of Vaishnav Engineering"
         description="Comprehensive technical roster and workforce muster roll spanning management, engineering, quality control, operations, and skilled plant operatives."
         statusBadge="31 Technical Staff Verified"

@@ -15,6 +15,7 @@ export default function Section03RdsoApproval({ onOpenPdfModal }: Section03RdsoA
     <div className="space-y-8">
       <RdsoSectionHeader
         number="03"
+        category="RDSO APPROVAL"
         title="RDSO Approval Details"
         description="Official approval status accredited by Research Designs & Standards Organisation (RDSO), Director General (B&S), Ministry of Railways, Lucknow, Government of India."
         statusBadge="Part-A Approved Railway Vendor"

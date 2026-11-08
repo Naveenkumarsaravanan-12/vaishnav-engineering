@@ -57,6 +57,7 @@ export default function Section12ExecutedWorks({ onOpenLightbox, onOpenPdfModal 
     <div className="space-y-8">
       <RdsoSectionHeader
         number="12"
+        category="EXECUTED WORKS"
         title="EXECUTED WORKS & SUPPLIES"
         description="A comprehensive record of completed railway bridge girders, composite Road Over Bridges (ROBs), and bowstring steel spans successfully fabricated and inspected by RDSO & SR/FIU."
         statusBadge="7 Completed Projects Verified"

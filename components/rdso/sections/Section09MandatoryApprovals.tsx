@@ -15,6 +15,7 @@ export default function Section09MandatoryApprovals({ onOpenPdfModal }: Section0
     <div className="space-y-8">
       <RdsoSectionHeader
         number="09"
+        category="MANDATORY APPROVALS"
         title="Mandatory Approvals & Accreditations"
         description="Statutory testing accreditations, radiation safety clearances, and non-destructive examination certifications mandated by RDSO and Indian Railways."
         statusBadge="NABL / AERB / ASNT Validated"

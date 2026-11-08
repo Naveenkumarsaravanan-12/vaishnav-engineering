@@ -26,6 +26,7 @@ export default function Section08TestingFacilities({
     <div className="space-y-8">
       <RdsoSectionHeader
         number="08"
+        category="TESTING FACILITIES & NDT"
         title="Testing Facilities & Non-Destructive Testing (NDT)"
         description="Comprehensive testing capabilities covering dimensional metrology, spectrometer chemical testing, Charpy impact mechanical testing, and ASNT/AERB certified NDT (DPT, UT/PAUT, RT)."
         statusBadge="NABL & AERB Compliant"

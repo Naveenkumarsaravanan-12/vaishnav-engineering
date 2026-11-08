@@ -14,6 +14,7 @@ export default function Section04FirmRegistration({ onOpenPdfModal }: Section04F
     <div className="space-y-8">
       <RdsoSectionHeader
         number="04"
+        category="FIRM REGISTRATION"
         title="Firm Registration Details"
         description="Statutory industrial enterprise registration credentials, MSME UDYAM classification, GST registrations, and corporate governance compliance."
         statusBadge="MSME & GST Registered"

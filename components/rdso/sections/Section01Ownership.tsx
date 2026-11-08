@@ -11,6 +11,7 @@ export default function Section01Ownership() {
     <div className="space-y-10">
       <RdsoSectionHeader
         number="01"
+        category="COMPANY PROFILE"
         title="Ownership Details"
         description="Statutory ownership structure, executive leadership roster, incorporation timeline, and corporate charter particulars."
         statusBadge="RDSO Checklist Item #01"

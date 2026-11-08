@@ -56,6 +56,7 @@ export default function Section13WorksInHand({ onOpenPdfModal }: Section13WorksI
     <div className="space-y-8">
       <RdsoSectionHeader
         number="13"
+        category="WORKS IN HAND"
         title="CURRENT WORKS IN HAND"
         description="A comprehensive overview of ongoing railway bridge fabrication, Road Over Bridge (ROB) and infrastructure projects undertaken by Vaishnav Engineering."
         statusBadge="8 Ongoing Projects"

@@ -14,6 +14,7 @@ export default function Section05FactoryLicence({ onOpenPdfModal }: Section05Fac
     <div className="space-y-8">
       <RdsoSectionHeader
         number="05"
+        category="FACTORY LICENCE"
         title="Factory Licence Details"
         description="Official factory operating licence and statutory compliance clearance issued under the Factories Act, 1948 by the Directorate of Industrial Safety & Health."
         statusBadge="Valid & Active to Dec 2026"

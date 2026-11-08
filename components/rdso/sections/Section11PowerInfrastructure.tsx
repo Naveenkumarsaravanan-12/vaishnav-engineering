@@ -48,6 +48,7 @@ export default function Section11PowerInfrastructure({
     <div className="space-y-8">
       <RdsoSectionHeader
         number="11"
+        category="POWER INFRASTRUCTURE"
         title="Power Infrastructure & Heavy Utilities"
         description="High-tension electrical utility supply, sanctioned connected load allocations, and diesel generator backup systems supporting heavy continuous fabrication."
         statusBadge="250 kVA HT Sanctioned"
