@@ -163,7 +163,7 @@ export default function Home() {
               <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:-translate-y-1 hover:border-[#C6A66B] hover:shadow-xl hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 group">
                 <span className="text-xs font-mono text-[#89939D] uppercase tracking-widest block mb-1 font-semibold">Clear Span</span>
                 <p className="font-heading text-3xl sm:text-4xl font-extrabold text-[#20262D] group-hover:text-[#C6A66B] transition-colors">
-                  <Counter to={120} suffix="m" />
+                  <Counter to={100} suffix="m" />
                 </p>
                 <p className="text-xs text-[#C6A66B] mt-2 font-mono font-bold">Single-Span Launch</p>
               </div>
