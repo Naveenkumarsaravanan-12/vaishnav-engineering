@@ -168,10 +168,12 @@ export default function ProjectsPage() {
                             <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/80 via-transparent to-transparent pointer-events-none" />
 
                             {/* Top-Left: Status HUD */}
-                            <div className="absolute top-3.5 left-3.5 flex items-center gap-2 rounded-full bg-[#101820]/90 backdrop-blur-md px-3.5 py-1.5 border border-[#39434D] text-[#F8F7F2] text-xs font-bold shadow-xs">
-                              <span className="h-2 w-2 rounded-full bg-[#C6A66B] animate-pulse" />
-                              <span>{p.status}</span>
-                            </div>
+                            {p.status && (
+                              <div className="absolute top-3.5 left-3.5 flex items-center gap-2 rounded-full bg-[#101820]/90 backdrop-blur-md px-3.5 py-1.5 border border-[#39434D] text-[#F8F7F2] text-xs font-bold shadow-xs">
+                                <span className="h-2 w-2 rounded-full bg-[#C6A66B] animate-pulse" />
+                                <span>{p.status}</span>
+                              </div>
+                            )}
 
                             {/* Top-Right: Interactive Zoom Cue */}
                             <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1.5 border border-[#39434D]/20 text-[#20262D] text-xs font-bold shadow-xs group-hover:bg-[#101820] group-hover:text-[#F8F7F2] transition-all">
@@ -186,9 +188,11 @@ export default function ProjectsPage() {
                             </div>
 
                             {/* Bottom-Right: Tonnage */}
-                            <div className="absolute bottom-3.5 right-3.5 rounded-xl bg-[#C6A66B] px-3.5 py-1.5 text-xs font-mono font-bold text-[#101820] shadow-sm">
-                              {p.tonnage}
-                            </div>
+                            {p.tonnage && (
+                              <div className="absolute bottom-3.5 right-3.5 rounded-xl bg-[#C6A66B] px-3.5 py-1.5 text-xs font-mono font-bold text-[#101820] shadow-sm">
+                                {p.tonnage}
+                              </div>
+                            )}
                           </div>
                         </div>
 
@@ -205,6 +209,11 @@ export default function ProjectsPage() {
                             <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#20262D] tracking-tight leading-snug">
                               {p.title}
                             </h3>
+                            {p.subtitle && (
+                              <p className="text-xs sm:text-sm font-mono font-bold text-[#C6A66B] tracking-wide mt-1">
+                                {p.subtitle}
+                              </p>
+                            )}
 
                             <p className="mt-3 text-xs sm:text-sm text-[#5C6670] leading-relaxed font-normal">
                               {p.description}
@@ -213,14 +222,18 @@ export default function ProjectsPage() {
 
                           {/* Specification Bento Grid */}
                           <div className="grid grid-cols-2 gap-3 rounded-2xl bg-[#F5F3EE] border border-[#39434D]/15 p-4.5 text-xs font-mono shadow-2xs">
-                            <div>
-                              <span className="text-[11px] text-[#89939D] block font-sans font-medium uppercase tracking-wider">Client Authority</span>
-                              <span className="font-bold text-[#20262D] truncate block mt-1">{p.client}</span>
-                            </div>
-                            <div>
-                              <span className="text-[11px] text-[#89939D] block font-sans font-medium uppercase tracking-wider">Completion Year</span>
-                              <span className="font-bold text-[#20262D] block mt-1">{p.year}</span>
-                            </div>
+                            {p.client && (
+                              <div>
+                                <span className="text-[11px] text-[#89939D] block font-sans font-medium uppercase tracking-wider">Client Authority</span>
+                                <span className="font-bold text-[#20262D] truncate block mt-1">{p.client}</span>
+                              </div>
+                            )}
+                            {p.year && (
+                              <div>
+                                <span className="text-[11px] text-[#89939D] block font-sans font-medium uppercase tracking-wider">Completion Year</span>
+                                <span className="font-bold text-[#20262D] block mt-1">{p.year}</span>
+                              </div>
+                            )}
                             <div className="col-span-2 pt-2.5 border-t border-[#39434D]/15">
                               <span className="text-[11px] text-[#89939D] block font-sans font-medium uppercase tracking-wider">Span Specification</span>
                               <span className="font-bold text-[#C6A66B] block leading-tight mt-1">{p.spanDetails}</span>
@@ -273,9 +286,11 @@ export default function ProjectsPage() {
                           <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/80 via-transparent to-transparent pointer-events-none" />
 
                           {/* Status */}
-                          <span className="absolute top-3.5 left-3.5 rounded-full bg-[#101820]/90 backdrop-blur-md px-3.5 py-1 text-xs font-bold text-[#F8F7F2] border border-[#39434D]">
-                            <CheckCircle2 className="h-3.5 w-3.5 inline mr-1 text-[#C6A66B]" /> {p.status}
-                          </span>
+                          {p.status && (
+                            <span className="absolute top-3.5 left-3.5 rounded-full bg-[#101820]/90 backdrop-blur-md px-3.5 py-1 text-xs font-bold text-[#F8F7F2] border border-[#39434D]">
+                              <CheckCircle2 className="h-3.5 w-3.5 inline mr-1 text-[#C6A66B]" /> {p.status}
+                            </span>
+                          )}
 
                           {/* Touch pill */}
                           <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-[#20262D] border border-[#39434D]/20 shadow-xs group-hover:bg-[#101820] group-hover:text-[#F8F7F2] transition-all">
@@ -284,9 +299,11 @@ export default function ProjectsPage() {
                           </div>
 
                           {/* Tonnage */}
-                          <span className="absolute bottom-3.5 right-3.5 rounded-xl bg-[#C6A66B] px-3.5 py-1 text-xs font-mono font-bold text-[#101820] shadow-xs">
-                            {p.tonnage}
-                          </span>
+                          {p.tonnage && (
+                            <span className="absolute bottom-3.5 right-3.5 rounded-xl bg-[#C6A66B] px-3.5 py-1 text-xs font-mono font-bold text-[#101820] shadow-xs">
+                              {p.tonnage}
+                            </span>
+                          )}
                         </div>
 
                         {/* Content Area */}
@@ -294,6 +311,11 @@ export default function ProjectsPage() {
                           <div className="min-h-[58px]">
                             <span className="text-[11px] font-mono text-[#C6A66B] font-bold block mb-1">PROJECT 0{idx + 1}</span>
                             <h3 className="font-heading text-lg sm:text-xl font-bold text-[#20262D] leading-snug">{p.title}</h3>
+                            {p.subtitle && (
+                              <p className="text-xs font-mono font-bold text-[#C6A66B] tracking-wide mt-1">
+                                {p.subtitle}
+                              </p>
+                            )}
                           </div>
 
                           <p className="text-xs sm:text-sm text-[#5C6670] leading-relaxed min-h-[48px] line-clamp-3 font-normal">
@@ -301,14 +323,18 @@ export default function ProjectsPage() {
                           </p>
 
                           <div className="grid grid-cols-2 gap-3 rounded-2xl bg-[#F5F3EE] p-4 text-xs font-mono border border-[#39434D]/15 shadow-2xs">
-                            <div>
-                              <span className="text-[#89939D] block text-[11px] font-sans font-medium uppercase tracking-wider">Client:</span>
-                              <span className="font-bold text-[#20262D] truncate block mt-0.5">{p.client}</span>
-                            </div>
-                            <div>
-                              <span className="text-[#89939D] block text-[11px] font-sans font-medium uppercase tracking-wider">Year:</span>
-                              <span className="font-bold text-[#20262D] block mt-0.5">{p.year}</span>
-                            </div>
+                            {p.client && (
+                              <div>
+                                <span className="text-[#89939D] block text-[11px] font-sans font-medium uppercase tracking-wider">Client:</span>
+                                <span className="font-bold text-[#20262D] truncate block mt-0.5">{p.client}</span>
+                              </div>
+                            )}
+                            {p.year && (
+                              <div>
+                                <span className="text-[#89939D] block text-[11px] font-sans font-medium uppercase tracking-wider">Year:</span>
+                                <span className="font-bold text-[#20262D] block mt-0.5">{p.year}</span>
+                              </div>
+                            )}
                             <div className="col-span-2 pt-2 border-t border-[#39434D]/15">
                               <span className="text-[#89939D] block text-[11px] font-sans font-medium uppercase tracking-wider">Span Specification:</span>
                               <span className="font-bold text-[#C6A66B] block truncate mt-0.5">{p.spanDetails}</span>
@@ -461,21 +487,30 @@ export default function ProjectsPage() {
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-[#39434D]/15 px-6 sm:px-8 py-5 bg-[#F5F3EE]">
               <div className="flex items-center gap-4 min-w-0">
-                <span className="rounded-xl bg-[#C6A66B] px-3.5 py-1.5 text-xs font-mono font-bold text-[#101820] shrink-0 shadow-xs">
-                  {lightboxProject.tonnage}
-                </span>
+                {lightboxProject.tonnage && (
+                  <span className="rounded-xl bg-[#C6A66B] px-3.5 py-1.5 text-xs font-mono font-bold text-[#101820] shrink-0 shadow-xs">
+                    {lightboxProject.tonnage}
+                  </span>
+                )}
                 <div className="min-w-0">
                   <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#20262D] tracking-tight leading-snug truncate">
                     {lightboxProject.title}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2.5 text-xs text-[#5C6670] mt-1">
-                    <span className="font-semibold text-[#20262D]">{lightboxProject.client}</span>
-                    <span>•</span>
-                    <span>Year {lightboxProject.year}</span>
-                    <span>•</span>
-                    <span className="inline-flex items-center gap-1 text-[#20262D] font-bold">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#C6A66B]" /> {lightboxProject.status}
-                    </span>
+                    {lightboxProject.client && <span className="font-semibold text-[#20262D]">{lightboxProject.client}</span>}
+                    {lightboxProject.client && lightboxProject.year && <span>•</span>}
+                    {lightboxProject.year && <span>Year {lightboxProject.year}</span>}
+                    {lightboxProject.subtitle && (
+                      <span className="font-mono font-bold text-[#C6A66B]">{lightboxProject.subtitle}</span>
+                    )}
+                    {lightboxProject.status && (
+                      <>
+                        <span>•</span>
+                        <span className="inline-flex items-center gap-1 text-[#20262D] font-bold">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[#C6A66B]" /> {lightboxProject.status}
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -536,7 +571,7 @@ export default function ProjectsPage() {
                 </div>
                 <div className="rounded-2xl bg-white border border-[#39434D]/20 p-3.5 shadow-xs">
                   <span className="text-[10px] uppercase text-[#89939D] block tracking-wider font-mono font-medium">Client Authority</span>
-                  <span className="font-bold text-[#20262D] truncate block mt-1 font-sans">{lightboxProject.client}</span>
+                  <span className="font-bold text-[#20262D] truncate block mt-1 font-sans">{lightboxProject.client || "Southern Railway"}</span>
                 </div>
                 <div className="rounded-2xl bg-white border border-[#39434D]/20 p-3.5 shadow-xs">
                   <span className="text-[10px] uppercase text-[#89939D] block tracking-wider font-mono font-medium">Erection Location</span>

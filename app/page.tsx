@@ -196,29 +196,40 @@ export default function Home() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-                    <div className="absolute top-3 left-3 bg-[#101820]/90 text-[#C6A66B] text-[10px] font-mono font-bold px-2.5 py-1 rounded-md backdrop-blur-xs border border-[#C6A66B]/30 shadow-xs">
-                      {project.tonnage}
-                    </div>
-                    <div className="absolute top-3 right-3 bg-[#202A33] text-[#F8F7F2] text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border border-[#39434D] shadow-xs">
-                      {project.status}
-                    </div>
+                    {project.tonnage && (
+                      <div className="absolute top-3 left-3 bg-[#101820]/90 text-[#C6A66B] text-[10px] font-mono font-bold px-2.5 py-1 rounded-md backdrop-blur-xs border border-[#C6A66B]/30 shadow-xs">
+                        {project.tonnage}
+                      </div>
+                    )}
+                    {project.status && (
+                      <div className="absolute top-3 right-3 bg-[#202A33] text-[#F8F7F2] text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border border-[#39434D] shadow-xs">
+                        {project.status}
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
                     <div>
-                      <span className="text-[11px] font-mono font-semibold text-[#C6A66B] uppercase block mb-1">
-                        {project.client} • {project.year}
-                      </span>
-                      <h3 className="font-heading text-lg font-bold text-[#20262D] mb-2 leading-snug group-hover:text-[#C6A66B] transition-colors">
+                      {Boolean(project.client || project.year) && (
+                        <span className="text-[11px] font-mono font-semibold text-[#C6A66B] uppercase block mb-1">
+                          {[project.client, project.year].filter(Boolean).join(" • ")}
+                        </span>
+                      )}
+                      <h3 className="font-heading text-lg font-bold text-[#20262D] mb-1.5 leading-snug group-hover:text-[#C6A66B] transition-colors">
                         {project.title}
                       </h3>
+                      {project.subtitle && (
+                        <p className="text-xs font-mono font-bold text-[#C6A66B] tracking-wide mb-2.5">
+                          {project.subtitle}
+                        </p>
+                      )}
                       <p className="text-xs text-[#5C6670] leading-relaxed mb-4 font-normal">
                         {project.description}
                       </p>
                     </div>
 
                     <div className="pt-4 border-t border-[#39434D]/15 flex items-center justify-between text-xs font-mono text-[#89939D]">
-                      <span>SPAN: {project.spanDetails}</span>
+                      <span>{project.spanDetails.startsWith("SPAN:") ? project.spanDetails : `SPAN: ${project.spanDetails}`}</span>
                       <Link
                         href="/projects"
                         className="text-[#20262D] hover:text-[#C6A66B] font-bold flex items-center gap-1 transition-colors"

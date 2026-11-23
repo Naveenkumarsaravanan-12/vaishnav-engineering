@@ -26,11 +26,12 @@ export interface Machine {
 export interface ProjectItem {
   id: string;
   title: string;
-  client: string;
-  year: string;
-  tonnage: string;
+  subtitle?: string;
+  client?: string;
+  year?: string;
+  tonnage?: string;
   spanDetails: string;
-  status: "Completed" | "In Progress";
+  status?: "Completed" | "In Progress";
   progress?: number;
   expectedCompletion?: string;
   location: string;
@@ -264,24 +265,19 @@ export const WORKFORCE_STATS = {
 export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: "p1",
-    title: "Chennai Division Railway Open Web Steel Bridge Girder",
+    title: "Madurai Division Steel Bowstring Arch Bridge",
     client: "Southern Railway / RVNL",
     year: "2025",
-    tonnage: "1,450 MT",
-    spanDetails: "3 Spans x 45.7m Bowstring Open Web Girders",
-    status: "Completed",
+    spanDetails: "2 × 48 Meters Span",
     location: "Chennai Division, Tamil Nadu",
     image: "/projects/bridge-1.png",
     description: "Fabrication, trial assembly, shot blasting and site delivery of heavy railway steel bridge spans under strict RDSO B&S inspection."
   },
   {
     id: "p2",
-    title: "Railway Over Bridge (ROB) Steel Plate Girder Package",
-    client: "State Highway & Southern Railway Joint Project",
-    year: "2024",
-    tonnage: "980 MT",
-    spanDetails: "4 Spans x 36m Composite Steel Plate Girders",
-    status: "Completed",
+    title: "Mangalore Division Steel Bowstring Arch Bridge",
+    subtitle: "Longest Meter Single Span Bridge",
+    spanDetails: "1 × 100 METER",
     location: "Coimbatore, Tamil Nadu",
     image: "/projects/bridge-2.png",
     description: "Heavy plate girder fabrication with high strength friction grip (HSFG) bolting connection splices."

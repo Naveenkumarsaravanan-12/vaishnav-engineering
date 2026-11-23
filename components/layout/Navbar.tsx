@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: "RDSO", href: "/rdso" },
+    { name: "VENDOR APPROVAL RDSO", href: "/rdso" },
     { name: "Company", href: "/company" },
     { name: "Services", href: "/services" },
     { name: "Infrastructure", href: "/infrastructure" },
