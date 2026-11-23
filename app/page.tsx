@@ -4,10 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  ShieldCheck,
   Award,
-  Layers,
-  Activity,
   CheckCircle2,
   ArrowRight,
   Zap,
@@ -17,7 +14,6 @@ import {
   Compass,
   ChevronRight,
   Gauge,
-  Cpu,
   Factory,
   Wrench,
   Sparkles,
@@ -25,59 +21,11 @@ import {
 import HeroSection from "@/components/HeroSection";
 import ROBVideoScrollSection from "@/components/sections/ROBVideoScrollSection";
 import { PROJECTS_DATA, RDSO_APPROVAL_INFO } from "@/data/portalData";
-import { AnimatedBackground, Reveal, Counter, SectionDivider } from "@/components/motion";
+import { AnimatedBackground, Reveal, SectionDivider } from "@/components/motion";
 
 export default function Home() {
-  const [activeSpecTab, setActiveSpecTab] = useState<"arch" | "deck" | "hangers" | "bearings">("arch");
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
-
-  const specData = {
-    arch: {
-      title: "Parabolic Arch Rib System",
-      code: "VE-ARCH-450",
-      description: "Curved welded hollow box sections fabricated from high-tensile structural steel (IS 2062 E450 BR). Designed to carry primary compressive loads with parabolic curvature optimized to eliminate bending moments under uniform railway loading.",
-      specs: [
-        { label: "Steel Specification", value: "IS 2062 E450 BR" },
-        { label: "Yield Strength (Fy)", value: "450 - 540 MPa" },
-        { label: "Welding Code", value: "AWS D1.5 / IRS B1" },
-        { label: "NDE Examination", value: "100% Ultrasonic & Radiography" },
-      ]
-    },
-    deck: {
-      title: "Orthotropic Steel Deck & Box Girders",
-      code: "VE-DECK-32T",
-      description: "Continuous welded longitudinal and transverse stiffened floor beams. Provides ultra-high torsional rigidity to withstand 32.5-tonne heavy freight axle impacts with minimal dynamic deflection.",
-      specs: [
-        { label: "Design Axle Capacity", value: "32.5 Tonnes (DFC Heavy)" },
-        { label: "Max Dynamic Deflection", value: "L / 1200 Max" },
-        { label: "Surface Protection", value: "150µm Zinc Thermal Spray" },
-        { label: "Design Life Expectancy", value: "100+ Years" },
-      ]
-    },
-    hangers: {
-      title: "High-Tensile Suspender Rods & Ties",
-      code: "VE-SUSP-120",
-      description: "Pre-tensioned vertical suspender cables equipped with forged spherical sockets and zinc filler protection. Maintains balanced tensile force distribution across every meter of the track deck.",
-      specs: [
-        { label: "Cable Tensile Strength", value: "1,770 - 1,860 MPa" },
-        { label: "Fatigue Stress Range", value: "UIC-774-3R Class S" },
-        { label: "Socket Termination", value: "Hot-Cast Resin Zinc Alloy" },
-        { label: "Vibration Dampers", value: "Tuned Stockbridge Installed" },
-      ]
-    },
-    bearings: {
-      title: "Spherical & Pot Elastomeric Bearings",
-      code: "VE-BEAR-POT",
-      description: "Multi-directional PTFE/stainless steel sliding pot bearings configured to accommodate longitudinal bridge expansion, transverse seismic movements, and micro-rotations under high-speed passage.",
-      specs: [
-        { label: "Vertical Capacity", value: "Up to 3,500 Tonnes" },
-        { label: "Longitudinal Stroke", value: "±150 mm Movement" },
-        { label: "Rotational Freedom", value: "0.03 Radians 3-Axis" },
-        { label: "Standard Compliance", value: "IRC:83 (Part III) / BS 5400" },
-      ]
-    }
-  };
 
   const coreVerticals = [
     {
@@ -130,170 +78,6 @@ export default function Home() {
 
       {/* ---------------- 2. RDSO 72M BOWSTRING GIRDER ROB ERECTION (SCROLL-CONTROLLED MP4 VIDEO) ---------------- */}
       <ROBVideoScrollSection />
-
-      {/* ---------------- 3. TECHNICAL SPECIFICATIONS & BLUEPRINT (LIGHT SECTION - WARM IVORY) ---------------- */}
-      <section id="specifications" className="relative z-20 py-20 md:py-28 px-6 sm:px-12 md:px-20 border-t border-[#39434D]/20 bg-[#F5F3EE] text-[#20262D] overflow-hidden">
-        {/* Animated Blueprint Background */}
-        <AnimatedBackground variant="blueprint-grid" theme="light" opacity={0.65} />
-
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <Reveal direction="left">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#E5E8EB] px-3.5 py-1 text-xs font-mono text-[#20262D] border border-[#39434D]/30 mb-4 font-bold shadow-xs">
-                  <Compass className="h-3.5 w-3.5 text-[#C6A66B]" /> ARCHITECTURAL DISASSEMBLY & METRICS
-                </div>
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#20262D] leading-tight">
-                  Sub-Assembly Engineering Specs
-                </h2>
-              </div>
-            </Reveal>
-
-            <Reveal direction="right" delay={0.1}>
-              <p className="max-w-md text-sm sm:text-base text-[#5C6670] leading-relaxed font-normal">
-                Every component fabricated in our Chennai heavy engineering plant conforms to rigorous Indian Railways RDSO B1 standards.
-              </p>
-            </Reveal>
-          </div>
-
-          {/* Key Metrics Quick Bar with Animated Counters */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-            <Reveal direction="scale" delay={0.05}>
-              <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:-translate-y-1 hover:border-[#C6A66B] hover:shadow-xl hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 group">
-                <span className="text-xs font-mono text-[#89939D] uppercase tracking-widest block mb-1 font-semibold">Clear Span</span>
-                <p className="font-heading text-3xl sm:text-4xl font-extrabold text-[#20262D] group-hover:text-[#C6A66B] transition-colors">
-                  <Counter to={100} suffix="m" />
-                </p>
-                <p className="text-xs text-[#C6A66B] mt-2 font-mono font-bold">Single-Span Launch</p>
-              </div>
-            </Reveal>
-
-            <Reveal direction="scale" delay={0.12}>
-              <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:-translate-y-1 hover:border-[#C6A66B] hover:shadow-xl hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 group">
-                <span className="text-xs font-mono text-[#89939D] uppercase tracking-widest block mb-1 font-semibold">Axle Capacity</span>
-                <p className="font-heading text-3xl sm:text-4xl font-extrabold text-[#20262D] group-hover:text-[#C6A66B] transition-colors">
-                  32.5T
-                </p>
-                <p className="text-xs text-[#C6A66B] mt-2 font-mono font-bold">DFC Heavy Corridor</p>
-              </div>
-            </Reveal>
-
-            <Reveal direction="scale" delay={0.19}>
-              <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:-translate-y-1 hover:border-[#C6A66B] hover:shadow-xl hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 group">
-                <span className="text-xs font-mono text-[#89939D] uppercase tracking-widest block mb-1 font-semibold">Steel Yield</span>
-                <p className="font-heading text-3xl sm:text-4xl font-extrabold text-[#20262D] group-hover:text-[#C6A66B] transition-colors">
-                  <Counter to={540} suffix=" MPa" />
-                </p>
-                <p className="text-xs text-[#C6A66B] mt-2 font-mono font-bold">IS 2062 E450 BR</p>
-              </div>
-            </Reveal>
-
-            <Reveal direction="scale" delay={0.26}>
-              <div className="rounded-2xl border border-[#39434D]/20 bg-white p-6 shadow-xs hover:-translate-y-1 hover:border-[#C6A66B] hover:shadow-xl hover:ring-1 hover:ring-[#C6A66B]/30 transition-all duration-300 group">
-                <span className="text-xs font-mono text-[#89939D] uppercase tracking-widest block mb-1 font-semibold">Audit Status</span>
-                <p className="font-heading text-3xl sm:text-4xl font-extrabold text-[#C6A66B] group-hover:text-[#B5955A] transition-colors">RDSO</p>
-                <p className="text-xs text-[#20262D] mt-2 font-mono font-bold">Approved Vendor</p>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Interactive Specification Explorer Tabs */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Tab Selectors */}
-            <div className="lg:col-span-4 flex flex-col gap-3">
-              {(
-                [
-                  { id: "arch", label: "01. Parabolic Arch Rib", icon: Layers },
-                  { id: "deck", label: "02. Orthotropic Deck Box", icon: Activity },
-                  { id: "hangers", label: "03. Suspender Cables & Ties", icon: Cpu },
-                  { id: "bearings", label: "04. Pot & Spherical Bearings", icon: Gauge },
-                ] as const
-              ).map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeSpecTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveSpecTab(tab.id)}
-                    className={`flex items-center justify-between p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
-                      isActive
-                        ? "bg-[#101820] border-[#C6A66B] text-[#F8F7F2] shadow-md font-semibold ring-1 ring-[#C6A66B]/30"
-                        : "bg-white border-[#39434D]/20 text-[#20262D] hover:border-[#C6A66B]/60 hover:bg-[#E5E8EB]/50 shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <Icon className={`h-4 w-4 ${isActive ? "text-[#C6A66B]" : "text-[#89939D]"}`} />
-                      <span className="text-sm font-semibold tracking-tight">{tab.label}</span>
-                    </div>
-                    <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? "rotate-90 text-[#C6A66B]" : "text-[#89939D]"}`} />
-                  </button>
-                );
-              })}
-
-              <div className="mt-4 p-5 rounded-2xl border border-[#39434D]/20 bg-white text-xs font-mono text-[#5C6670] space-y-2.5 shadow-xs">
-                <div className="text-[#20262D] font-bold uppercase tracking-wider flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-[#C6A66B]" />
-                  Quality Assurance Standards
-                </div>
-                <div>• Radiographic test on all butt welds</div>
-                <div>• Ultrasonic examination on all tension joints</div>
-                <div>• Trial erection in Chennai yard prior to dispatch</div>
-              </div>
-            </div>
-
-            {/* Active Tab Content Card */}
-            <Reveal direction="scale" delay={0.15} className="lg:col-span-8">
-              <div className="rounded-2xl border border-[#39434D]/20 bg-white p-8 sm:p-10 shadow-md text-[#20262D] relative overflow-hidden">
-                <div className="flex items-center justify-between border-b border-[#39434D]/15 pb-5 mb-6">
-                  <div>
-                    <span className="text-xs font-mono text-[#C6A66B] uppercase tracking-widest font-bold">
-                      Part ID: {specData[activeSpecTab].code}
-                    </span>
-                    <h3 className="font-heading text-2xl font-bold text-[#20262D] mt-1">
-                      {specData[activeSpecTab].title}
-                    </h3>
-                  </div>
-                  <div className="h-10 w-10 rounded-xl bg-[#F5F3EE] border border-[#39434D]/20 flex items-center justify-center">
-                    <ShieldCheck className="h-5 w-5 text-[#C6A66B]" />
-                  </div>
-                </div>
-
-                <p className="text-[#5C6670] text-sm sm:text-base leading-relaxed mb-8 font-normal">
-                  {specData[activeSpecTab].description}
-                </p>
-
-                {/* Data Table */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {specData[activeSpecTab].specs.map((item, idx) => (
-                    <div key={idx} className="rounded-xl bg-[#F5F3EE] border border-[#39434D]/15 p-4 hover:border-[#C6A66B]/50 transition-colors">
-                      <span className="text-xs font-mono text-[#89939D] uppercase block mb-1 font-semibold">
-                        {item.label}
-                      </span>
-                      <span className="font-heading text-base font-bold text-[#20262D] tracking-tight">
-                        {item.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-[#39434D]/15 flex flex-wrap items-center justify-between gap-4">
-                  <span className="text-xs font-mono text-[#89939D]">
-                    STANDARD: IRS BRIDGE RULES / UIC 774-3R
-                  </span>
-                  <button
-                    onClick={() => setDownloadModalOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-[#C6A66B] hover:text-[#B5955A] transition-colors cursor-pointer"
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    <span>Download Full Part Blueprint</span>
-                  </button>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION DIVIDER */}
       <SectionDivider number="VERTICA" label="Heavy Industrial Competencies" />
